@@ -25,7 +25,7 @@ PATH_PROCESS	=	source/process/
 SRC_PROCESS		=
 
 ## ========================================================================== ##
-SRC				=	main.c	\
+SRC				=	source/main.c	\
 					$(addprefix $(PATH_DISPLAY), $(SRC_DISPLAY))	\
 					$(addprefix $(PATH_ERROR), $(SRC_ERROR))	\
 					$(addprefix $(PATH_INIT), $(SRC_INIT))	\
