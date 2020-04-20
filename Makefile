@@ -25,16 +25,11 @@ PATH_VM			=	source/vm/
 SRC_VM			=	vm.c	\
 
 ## ========================================================================== ##
-PATH_ASSEMBLY			=	source/assembly/
-SRC_ASSPATH_ASSEMBLY			=	asm.c	\
-
-## ========================================================================== ##
 SRC				=	source/main.c	\
 					$(addprefix $(PATH_DISPLAY), $(SRC_DISPLAY))	\
 					$(addprefix $(PATH_ERROR), $(SRC_ERROR))	\
 					$(addprefix $(PATH_INIT), $(SRC_INIT))	\
 					$(addprefix $(PATH_VM), $(SRC_VM))	\
-					$(addprefix $(PATH_ASSEMBLY), $(SRC_ASSEMBLY))	\
 
 BIN				= 	corewar
 
