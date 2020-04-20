@@ -12,7 +12,6 @@ static bool (*process[])(core_t *core) =
     // init,
     // error_handling,
     // vm_core,
-    // assembly_core
 };
 
 static bool corewar(const int ac, char *const restrict *const restrict av)
