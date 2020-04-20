@@ -19,7 +19,7 @@
 #include "../library/_maths/include/maths.h"
 
 #include "vm_define.h"
-#include "vm_struct.h"
+#include "../struct.h"
 #include "vm_function.h"
 
 #endif /* !VM_H_ */

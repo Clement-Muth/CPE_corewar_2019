@@ -14,4 +14,6 @@
 #include <unistd.h>
 #include <math.h>
 
+#include "struct.h"
+
 #endif /* !COREWAR_H_ */
