@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2020
-** cstat [WSL: Debian]
+** stat [WSL: Debian]
 ** File description:
-** cstat_free
+** stat_free
 */
 
 #include "stat.h"

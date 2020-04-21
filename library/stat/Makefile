@@ -10,7 +10,7 @@ WARNING				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[33m $1\x1b[0m"
 ATT					= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[31m $1\x1b[0m"
 DONE				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[34m $1\x1b[0m"
 
-LIB 				= libcstat.a
+LIB 				= lib_stat.a
 
 SRC 				= stat.c	\
 					  stat_free.c	\
@@ -20,7 +20,7 @@ SRC 				= stat.c	\
 
 CFLAGS 				= -Wall -I./include
 
-LDFLAGS				= -L../../ -lcstring
+LDFLAGS				= -L../../ -l_string
 
 AR 					= @ar rc
 

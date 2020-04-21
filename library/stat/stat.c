@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** library [WSL: Debian]
 ** File description:
-** cstat
+** stat
 */
 
 #include "stat.h"

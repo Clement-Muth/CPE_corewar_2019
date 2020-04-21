@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** lemin_2019 [WSL: Debian]
 ** File description:
-** initcstat
+** initstat
 */
 
 #include "stat.h"

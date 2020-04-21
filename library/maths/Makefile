@@ -10,7 +10,7 @@ WARNING				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[33m $1\x1b[0m"
 ATT					= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[31m $1\x1b[0m"
 DONE				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[34m $1\x1b[0m"
 
-LIB 				= libcmaths.a
+LIB 				= lib_maths.a
 
 SRC 				= atoi.c	\
 					  dist_roth.c	\
@@ -21,7 +21,7 @@ SRC 				= atoi.c	\
 
 CFLAGS 				= -Wall -I./include
 
-LDFLAGS				= -L../../ -lcstring
+LDFLAGS				= -L../../ -l_string
 
 AR 					= @ar rc
 

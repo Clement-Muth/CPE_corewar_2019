@@ -18,6 +18,6 @@
 #include "maths_struct.h"
 #include "maths_define.h"
 #include "maths_function.h"
-#include "../../cstring/include/string.h"
+#include "../../string/include/string.h"
 
 #endif /* !MATHS_H_ */

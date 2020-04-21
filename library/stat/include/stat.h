@@ -17,6 +17,6 @@
 #include "stat_struct.h"
 #include "stat_define.h"
 #include "stat_function.h"
-#include "../../cstring/include/string.h"
+#include "../../string/include/string.h"
 
 #endif /* !STAT_H_ */
