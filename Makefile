@@ -42,9 +42,9 @@ RM				=	rm -rf
 CFLAGS			=	-W -Wall -Werror
 
 LDFLAGS			=	-Iinclude/ -Llibrary \
-					-l_stat	\
-					-l_string	\
-					-l_maths	\
+					-lcstat	\
+					-lcstring	\
+					-lcmaths	\
 
 DFLAGS			=	-g -Wfatal-errors -Wpedantic -Wextra \
 					-Wnonnull -Wmain -Wmissing-attributes -Wsequence-point -pg
@@ -55,26 +55,26 @@ $(BIN):			lib $(OBJ)
 				@$(CC) -o $(BIN) $(OBJ) $(LDFLAGS) $(CFLAGS)
 
 lib:
-				@$(MAKE) -C library/_string/
-				@$(MAKE) -C library/_stat/
-				@$(MAKE) -C library/_maths/
+				@$(MAKE) -C library/cstring/
+				@$(MAKE) -C library/cstat/
+				@$(MAKE) -C library/cmaths/
 
 clean:
 				$(RM) $(OBJ)
-				@$(MAKE) -C library/_string/ clean
-				@$(MAKE) -C library/_stat/ clean
-				@$(MAKE) -C library/_maths/ clean
+				@$(MAKE) -C library/cstring/ clean
+				@$(MAKE) -C library/cstat/ clean
+				@$(MAKE) -C library/cmaths/ clean
 
 fclean:			clean
 				$(RM) $(BIN)
-				@$(MAKE) -C library/_string/ fclean
-				@$(MAKE) -C library/_stat/ fclean
-				@$(MAKE) -C library/_maths/ fclean
+				@$(MAKE) -C library/cstring/ fclean
+				@$(MAKE) -C library/cstat/ fclean
+				@$(MAKE) -C library/cmaths/ fclean
 
 re_lib:
-				@$(MAKE) -C library/_string/ re
-				@$(MAKE) -C library/_stat/ re
-				@$(MAKE) -C library/_maths/ re
+				@$(MAKE) -C library/cstring/ re
+				@$(MAKE) -C library/cstat/ re
+				@$(MAKE) -C library/cmaths/ re
 
 re:				fclean all
 
