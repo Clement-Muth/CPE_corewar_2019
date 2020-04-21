@@ -10,7 +10,7 @@ WARNING				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[33m $1\x1b[0m"
 ERROR				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[31m $1\x1b[0m"
 DONE				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[34m $1\x1b[0m"
 
-LIB 				= libcstring.a
+LIB 				= lib_string.a
 
 SRC 				= memalloc.c	\
 					  strlen.c	\
@@ -36,15 +36,17 @@ AR 					= @ar rc
 LIB_OBJ 			= $(SRC:.c=.o)
 
 all:				$(LIB)
-					@$(call SUCCESS, "[ OK ] include has been correctly copied into ../../include/library/cstring/")
-					@$(call DONE, "[ DONE 100% ]")
+					@$(call SUCCESS, "[ OK ] _string.a has been created")
 
+%.o: %.c
+					@(echo "\033[32m[string] :[\033[31m \c")
+					@(echo "$@ \033[32m]\033[0m\033[0K")
+					@($(CC) $(CFLAGS) -c -o $@ $<)
+					@(echo "\033[2F")
 
 $(LIB):			$(LIB_OBJ)
 					@$(AR) $(LIB) $(LIB_OBJ)
-					@$(call SUCCESS, "[ OK ] Libmy library successfully compiled.")
 					@mv $(LIB) ../
-					@$(call SUCCESS, "[ OK ] cstring.a has been correctly moved into ../")
 
 clean_lib:
 					@$(RM) $(LIB)
@@ -52,13 +54,11 @@ clean_lib:
 
 clean:
 					@$(RM) $(LIB_OBJ)
-					@$(call SUCCESS, "[ OK ] *.o are removed in libmy")
 
 fclean: 			clean
 					@$(RM) ../$(LIB)
 					@$(RM) $(LIB)
 					@$(RM) -rf $(directory)
-					@$(call SUCCESS, "[ OK ] Libmy library fully cleaned.")
 
 re: 				fclean all
 

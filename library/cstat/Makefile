@@ -27,30 +27,27 @@ AR 					= @ar rc
 LIB_OBJ 			= $(SRC:.c=.o)
 
 all:				$(LIB)
-					@$(call SUCCESS, "[ OK ] include has benn correctly copied into ../../include/library/cstat/")
-					@$(call DONE, "[ DONE 100% ]")
+					@$(call SUCCESS, "[ OK ] _stat.a has been created")
+
+%.o: %.c
+					@(echo "\033[32m[stat] :[\033[31m \c")
+					@(echo "$@ \033[32m]\033[0m\033[0K")
+					@($(CC) $(CFLAGS) -c -o $@ $<)
+					@(echo "\033[2F")
 
 
 $(LIB):			$(LIB_OBJ)
 					@$(AR) $(LIB) $(LIB_OBJ)
-					@$(call SUCCESS, "[ OK ] libcstat.a library successfully compiled.")
 					@mv $(LIB) ../
-					@$(call SUCCESS, "[ OK ] cstat.a has been correctly moved into ../")
 
 clean:
 					@$(RM) $(LIB_OBJ)
-					@$(call ATT, "[ OK ] *.o are removed in libcstat.a")
 
 fclean:
 					@$(RM) ../$(LIB)
 					@$(RM) $(LIB)
 					@$(RM) -rf $(directory)
-					@$(call ATT, "[ OK ] libcstat.a library fully cleaned.")
 
 re: 				fclean all
 
 .PHONY				: all clean fclean re
-
-## ========================================================================== ##
-%.o:	%.c
-	@gcc $(LDFLAGS) $(CFLAGS) -g -o $@ -c $<

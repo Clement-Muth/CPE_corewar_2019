@@ -16,7 +16,7 @@ int m_pow(int nb , int p);
 
 int m_sqrt(int nb);
 
-void dist_roth(vector2i a, vector2i b);
+int dist_roth(vector2i a, vector2i b);
 
 bool preg_match(const char *__restrict__ pattern,
 const char *__restrict__ subject);

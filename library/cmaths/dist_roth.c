@@ -7,7 +7,7 @@
 
 #include "maths.h"
 
-void dist_roth(vector2i a, vector2i b)
+int dist_roth(vector2i a, vector2i b)
 {
     int x = m_pow(b.x - a.x, 2);
     int y = m_pow(b.y - a.y, 2);
