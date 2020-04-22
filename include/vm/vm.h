@@ -14,9 +14,9 @@
 #include <unistd.h>
 #include <math.h>
 
-#include "../library/cstring/include/string.h"
-#include "../library/cstat/include/stat.h"
-#include "../library/cmaths/include/maths.h"
+#include "../library/string/include/string.h"
+#include "../library/stat/include/stat.h"
+#include "../library/maths/include/maths.h"
 
 #include "vm_define.h"
 #include "../struct.h"

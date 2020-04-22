@@ -41,12 +41,12 @@ OBJ 			= 	$(SRC:.c=.o)
 
 RM				=	rm -rf
 
-CFLAGS			=	-W -Wall
+CFLAGS			=
 
 LDFLAGS			=	-Iinclude/ -Llibrary \
-					-lcstat	\
-					-lcstring	\
-					-lcmaths	\
+					-l_stat	\
+					-l_string	\
+					-l_maths	\
 
 DFLAGS			=	-g -Wfatal-errors -Wpedantic -Wextra \
 					-Wnonnull -Wmain -Wmissing-attributes -Wsequence-point -pg
@@ -115,26 +115,26 @@ champion:
 				@$(MAKE) -C source/assembly/
 
 lib:
-				@$(MAKE) -C library/cstring/
-				@$(MAKE) -C library/cstat/
-				@$(MAKE) -C library/cmaths/
+				@$(MAKE) -C library/string/
+				@$(MAKE) -C library/stat/
+				@$(MAKE) -C library/maths/
 
 clean:
 				$(RM) $(OBJ)
-				@$(MAKE) -C library/cstring/ clean
-				@$(MAKE) -C library/cstat/ clean
-				@$(MAKE) -C library/cmaths/ clean
+				@$(MAKE) -C library/string/ clean
+				@$(MAKE) -C library/stat/ clean
+				@$(MAKE) -C library/maths/ clean
 
 fclean:			clean
 				$(RM) $(BIN)
-				@$(MAKE) -C library/cstring/ fclean
-				@$(MAKE) -C library/cstat/ fclean
-				@$(MAKE) -C library/cmaths/ fclean
+				@$(MAKE) -C library/string/ fclean
+				@$(MAKE) -C library/stat/ fclean
+				@$(MAKE) -C library/maths/ fclean
 
 re_lib:
-				@$(MAKE) -C library/cstring/ re
-				@$(MAKE) -C library/cstat/ re
-				@$(MAKE) -C library/cmaths/ re
+				@$(MAKE) -C library/string/ re
+				@$(MAKE) -C library/stat/ re
+				@$(MAKE) -C library/maths/ re
 
 re:				fclean all
 
@@ -146,3 +146,6 @@ re:				fclean all
 				@(echo "$@ \033[32m]\033[0m\033[0K")
 				@($(CC) $(CFLAGS) $(LDFLAGS) -c -o $@ $<)
 				@(echo "\033[2F")
+
+
+

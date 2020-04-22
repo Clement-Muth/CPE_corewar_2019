@@ -53,9 +53,9 @@ $(BIN):			$(OBJ)
 				@$(CC) -o $(BIN) $(OBJ) $(LDFLAGS) $(CFLAGS)
 
 lib:
-				@$(MAKE) -C library/cstring/
-				@$(MAKE) -C library/cstat/
-				@$(MAKE) -C library/cmaths/
+				@$(MAKE) -C library/string/
+				@$(MAKE) -C library/stat/
+				@$(MAKE) -C library/maths/
 
 clean:
 				$(RM) $(OBJ)
