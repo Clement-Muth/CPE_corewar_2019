@@ -8,8 +8,8 @@
 SUCCESS				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
 
 ## ========================================================================== ##
-PATH_COMPILER	=	source/compiler/common/
-COMPILER		=
+PATH_COMPILER	=	./common/
+COMPILER		=	op.c
 
 
 ## ========================================================================== ##
