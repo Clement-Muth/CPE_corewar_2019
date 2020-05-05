@@ -19,5 +19,6 @@
 #include "../library/maths/include/maths.h"
 
 #include "compiler_struct.h"
+#include "compiler_function.h"
 
 #endif /* !COMPILER_H_ */

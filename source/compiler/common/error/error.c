@@ -9,5 +9,6 @@
 
 bool error(const int ac, char *const restrict *const restrict av)
 {
+    // if (ac != 2)
     return (true);
 }

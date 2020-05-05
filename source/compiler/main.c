@@ -11,8 +11,7 @@ static bool compiler(const int ac, char *const restrict *const restrict av)
 {
     compiler_t cmp;
 
-    // return ((error(ac, av) && init(&cmp) && process(&cmp))
-    // ? (true) : (false));
+    return (true);
 }
 
 int main(const int ac, char *const restrict *const restrict av)
