@@ -13,5 +13,6 @@ bool error(const int ac, char *const __restrict__ *const __restrict__ av);
 
 /*          init            */
 bool init(compiler_t *cmp);
+char *get_champion(char *file);
 
 #endif /* !COMPILER_FUNCTION_H_ */
