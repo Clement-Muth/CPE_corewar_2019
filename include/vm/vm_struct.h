@@ -8,6 +8,10 @@
 #ifndef VM_STRUCT_H_
 #define VM_STRUCT_H_
 
+typedef struct vm_s
+{
+    /* data */
+} vm_t;
 
 
 #endif /* !VM_STRUCT_H_ */
