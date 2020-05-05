@@ -8,7 +8,7 @@
 SUCCESS				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
 
 ## ==============================BINARY NAMES================================ ##
-VM_BIN		=	corewar
+VM_BIN			=	corewar
 ASM_BIN			=	asm
 BIN				=	$(VM_BIN) $(ASM_BIN)
 
@@ -40,6 +40,9 @@ $(VM_BIN):
 	@(cd $(VM_DIR) && make)
 	@(cp $(VM_DIR)$(VM_BIN) ./)
 
+
+vm:				$(VM_BIN)
+asm:			$(ASM_BIN)
 
 clean:
 				$(RM) $(OBJ)

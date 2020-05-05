@@ -8,8 +8,8 @@
 SUCCESS				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
 
 ## ========================================================================== ##
-PATH_VM			=	source/vm/common/
-VM				=
+PATH_VM	=	common/
+VM		=	error/error.c	\
 
 
 ## ========================================================================== ##
@@ -38,12 +38,14 @@ all:			$(BIN)
 $(BIN):			$(OBJ) lib
 				@$(CC) -o $(BIN) $(OBJ) $(LDFLAGS)
 
+
 ## =============MAKE LIB============= ##
 lib:
 				@$(MAKE) -C ../../library/string/
 				@$(MAKE) -C ../../library/assert/
 				@$(MAKE) -C ../../library/stat/
 				@$(MAKE) -C ../../library/maths/
+
 
 clean:
 				$(RM) $(OBJ)
@@ -60,14 +62,14 @@ fclean:			clean
 				@$(MAKE) -C ../../library/stat/ fclean
 				@$(MAKE) -C ../../library/maths/ fclean
 
-
-re:				fclean all
-
 re_lib:
 				@$(MAKE) -C ../../library/string/ re
 				@$(MAKE) -C ../../library/assert/ re
 				@$(MAKE) -C ../../library/stat/ re
 				@$(MAKE) -C ../../library/maths/ re
+
+
+re:				fclean all
 
 .PHONY:			 all, fclean, re
 

@@ -5,7 +5,7 @@
 ** error
 */
 
-#include "compiler.h"
+#include "vm/vm.h"
 
 bool error(const int ac, char *const restrict *const restrict av)
 {
