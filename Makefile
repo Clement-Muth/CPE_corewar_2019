@@ -22,27 +22,12 @@ ASM_DIR		=	./source/compiler/
 CC				=	gcc
 OBJ 			=	$(SRC:.c=.o)
 RM				=	rm -rf
-CFLAGS			=
-LDFLAGS			=	-Iinclude/ -Llibrary \
-					-l_assert	\
-					-l_stat	\
-					-l_string	\
-					-l_maths
 DFLAGS			=	-g -Wfatal-errors -Wpedantic -Wextra \
 					-Wnonnull -Wmain -Wmissing-attributes -Wsequence-point -pg
 
 
 ## ==============================PROCESS MAKE================================ ##
-all:			$(BIN) $(LIB)
-
-
-## =============MAKE LIB============= ##
-$(LIB):
-				@$(MAKE) -C library/string/
-				@$(MAKE) -C library/assert/
-				@$(MAKE) -C library/stat/
-				@$(MAKE) -C library/maths/
-
+all:			$(BIN)
 
 ## =============MAKE ASM============ ##
 $(ASM_BIN):
@@ -58,29 +43,17 @@ $(VM_BIN):
 
 clean:
 				$(RM) $(OBJ)
-				@$(MAKE) -C source/vm/ clean
 				@$(MAKE) -C source/compiler/ clean
-				@$(MAKE) -C library/string/ clean
-				@$(MAKE) -C library/assert/ clean
-				@$(MAKE) -C library/stat/ clean
-				@$(MAKE) -C library/maths/ clean
+				@$(MAKE) -C source/vm/ clean
 
 fclean:			clean
 				$(RM) $(BIN)
-				@$(MAKE) -C source/vm/ fclean
 				@$(MAKE) -C source/compiler/ fclean
-				@$(MAKE) -C library/string/ fclean
-				@$(MAKE) -C library/assert/ fclean
-				@$(MAKE) -C library/stat/ fclean
-				@$(MAKE) -C library/maths/ fclean
-
-re_lib:
-				@$(MAKE) -C library/string/ re
-				@$(MAKE) -C library/assert/ re
-				@$(MAKE) -C library/stat/ re
-				@$(MAKE) -C library/maths/ re
+				@$(MAKE) -C source/vm/ fclean
 
 re:				fclean all
+				@$(MAKE) -C source/compiler/ re
+				@$(MAKE) -C source/vm/ re
 
 .PHONY:			 all, fclean, re, library
 
