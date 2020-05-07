@@ -9,8 +9,10 @@ SUCCESS				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
 
 ## ========================================================================== ##
 PATH_COMPILER	=	./common/
-COMPILER		=	op.c
-
+COMPILER		=	op.c			\
+				header.c		\
+				instruction.c		\
+				name_and_command.c
 
 ## ========================================================================== ##
 SRC				=	main.c	\
