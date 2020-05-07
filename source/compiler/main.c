@@ -11,10 +11,12 @@
 static bool run(char *file)
 {
     stat_t *stat = m_stat(file, DEFAULT, complet);
-    op_t *champion = NULL;
-    header_t *header = NULL;
+    header_t *header = init_header();
+    op_t **instructions = init_instructions(stat->content);
 
-    if (NULL == stat)
+    if (NULL == stat || NULL == header || NULL == instructions)
+        return (false);
+    if (false == get_name_and_comment(header, stat->content))
         return (false);
     return (true);
 }
