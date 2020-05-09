@@ -55,7 +55,7 @@ static bool find_name_and_comment(header_t *header, char **buf, int index)
     char (*get_infos[2])(header_t *, char *) = {get_name, get_comment};
     char rtn = '0';
 
-    for (int i = 0; buf[i]; ++i) {
+    for (int i = index; buf[i]; ++i) {
         if ('0' != rtn)
             return (false);
         if ('.' != buf[i][0])
