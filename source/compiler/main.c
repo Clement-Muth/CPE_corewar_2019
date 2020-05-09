@@ -15,8 +15,9 @@ static bool run(char *file)
     op_t **instructions = init_instructions(stat->content);
 
     if (NULL == stat || NULL == header || NULL == instructions)
-        return (false);
-    if (false == get_name_and_comment(header, stat->content))
+        return (false);    
+    if (false ==
+        get_champions_informations(instructions, header, stat->content))
         return (false);
     return (true);
 }
