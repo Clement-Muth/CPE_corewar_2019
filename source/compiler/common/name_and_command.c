@@ -49,7 +49,7 @@ static int get_command_index(char **buf)
     return (index);
 }
 
-bool find_name_and_comment(header_t *header, char **buf, int index)
+static bool find_name_and_comment(header_t *header, char **buf, int index)
 {
     char *command[2] = {NAME_CMD_STRING, COMMENT_CMD_STRING};
     char (*get_infos[2])(header_t *, char *) = {get_name, get_comment};
@@ -70,7 +70,7 @@ bool find_name_and_comment(header_t *header, char **buf, int index)
     return (true);
 }
 
-bool get_name_and_command(header_t *header, char **buf)
+bool get_name_and_comment(header_t *header, char **buf)
 {
     int index = get_command_index(buf);
 

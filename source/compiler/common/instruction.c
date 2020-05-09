@@ -7,6 +7,17 @@
 
 #include "compiler/compiler.h"
 
+static bool add_instruction(op_t **list, char *line)
+{
+    int index = -1;
+
+    while (list[++index]);
+    list[index] = get_instruction(line);
+    if (NULL == list[index])
+        return (false);
+    return (true);
+}
+
 static int get_index_instructions(char **buf)
 {
     int index = -1;
@@ -19,7 +30,8 @@ static int get_index_instructions(char **buf)
     return (index);
 }
 
-bool get_instructions(op_t **instructions, char **buf)
+bool get_champions_informations(op_t **instructions, header_t *header,
+    char **buf)
 {
     int index = get_index_instructions(buf);
 
@@ -27,7 +39,11 @@ bool get_instructions(op_t **instructions, char **buf)
         m_putstr("A champion need instructions\n", 2);
         return (false);
     }
-    for (int i = index; buf[i]; ++i)
+    if (false == get_name_and_comment(header, buf))
+        return (false);
+    for (int i = index + 1; buf[i]; ++i)
+        if (false == add_instruction(instructions, buf[i]))
+            return (false);
     return (true);
 }
 
@@ -42,5 +58,8 @@ op_t **init_instructions(char **buf)
     new = malloc(sizeof(op_t *) * (nbr + 1));
     if (NULL == new)
         return (NULL);
+    for (int i = 0; nbr > i; ++i)
+        new[i] = NULL;
+    new[nbr] = NULL;
     return (new);
 }

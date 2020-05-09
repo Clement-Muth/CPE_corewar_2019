@@ -15,6 +15,16 @@ bool error(const int ac, char *const __restrict__ *const __restrict__ av);
 bool init(compiler_t *cmp);
 header_t *init_header(void);
 op_t **init_instructions(char **);
-bool get_name_and_command(header_t *, char **);
+bool get_champions_informations(op_t **, header_t *, char **);
+bool get_name_and_comment(header_t *, char **);
+bool check_args(char **);
+bool check_label(char *);
+bool check_types(char *, int *);
+op_t *get_instruction(char *);
+char *get_mnemonique(char *);
+int get_nb_arg(char *, char *);
+int *get_types(char *, char *, int);
+
+char **my_str_to_word_array(char *, char);
 
 #endif /* !COMPILER_FUNCTION_H_ */
