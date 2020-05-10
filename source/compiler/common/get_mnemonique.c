@@ -16,6 +16,17 @@ static bool check_mnemonique(char *str)
     return (false);
 }
 
+static void my_strncpy(char *dest, char const *src, int n)
+{
+    int i = 0;
+
+    while (src[i] != src[n]) {
+        dest[i] = src[i];
+        ++i;
+    }
+    dest[i] = '\0';
+}
+
 static char *find_mnemonique(char *line)
 {
     int index = 0;
@@ -30,7 +41,11 @@ static char *find_mnemonique(char *line)
         m_putstr("Wrong instruction format\n", 2);
         return (NULL);
     }
-    m_memcpy(mnemonique, line, index);
+    mnemonique = malloc(sizeof(char) * (index + 1));
+    if (NULL == mnemonique)
+        return (NULL);
+    my_strncpy(mnemonique, line, index);
+//    m_memcpy(mnemonique, line, index);
     return (mnemonique);
 }
 
@@ -40,6 +55,7 @@ char *get_mnemonique(char *line)
 
     if (NULL == new)
         return (NULL);
+    m_putstr("Check\n", 1);
     if (false == check_mnemonique(new)) {
         free(new);
         return (NULL);

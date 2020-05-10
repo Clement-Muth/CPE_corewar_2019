@@ -12,7 +12,7 @@ static bool check_nb_arg(char *str, int value)
     int index = 0;
 
     for (int i = 0; 0 != op_tab[i].mnemonique; ++i)
-        if (0 == m_strcmp(str, op_tab[i].mnemonique))
+        if (1 == m_strcmp(str, op_tab[i].mnemonique))
             index = i;
     if (op_tab[index].nbr_args == value)
         return (true);
