@@ -13,7 +13,7 @@ static char get_comment(header_t *header, char *line)
         m_putstr("Champion 's comment is too long\n", 2);
         return (false);
     }
-    if (NULL != header->comment) {
+    if ('\0' != header->comment[0]) {
         m_putstr("Name has already been set\n", 2);
         return (false);
     }
@@ -27,11 +27,11 @@ static char get_name(header_t *header, char *line)
         m_putstr("Champion's name is too long\n", 2);
         return (false);
     }
-    if (NULL != header->prog_name) {
+    if ('\0' != header->prog_name[0]) {
         m_putstr("Name has already been set\n", 2);
         return (false);
     }
-    m_strcpy(header->prog_name, line);
+    m_strcpy(header->prog_name, line + 7);
     return (true);
 }
 
@@ -53,19 +53,17 @@ static bool find_name_and_comment(header_t *header, char **buf, int index)
 {
     char *command[2] = {NAME_CMD_STRING, COMMENT_CMD_STRING};
     char (*get_infos[2])(header_t *, char *) = {get_name, get_comment};
-    char rtn = '0';
+    bool err = true;
+    int rtn = 0;
 
     for (int i = index; buf[i]; ++i) {
-        if ('0' != rtn)
+        if (false == err || -1 == rtn)
             return (false);
         if ('.' != buf[i][0])
             break;
-        if (0 == m_strcmp(command[i], buf[i])) {
-            rtn = get_infos[i](header, buf[i]);
-            continue;
-        }
-        m_putstr("There are only two commands: .name and .comment\n", 2);
-        return (false);
+        rtn = check_command(buf[i]);
+        if (-1 != rtn)
+            err = get_infos[rtn](header, buf[i]);
     }
     return (true);
 }

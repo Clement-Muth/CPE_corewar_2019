@@ -13,7 +13,8 @@ COMPILER		=	op.c			\
 				my_str_to_word_array.c	\
 				header.c		\
 				instruction.c		\
-				name_and_command.c	\
+				name_and_comment.c	\
+				check_command.c		\
 				check_args.c		\
 				check_label.c		\
 				check_types.c		\

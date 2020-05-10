@@ -8,6 +8,25 @@
 #include <stddef.h>
 #include "compiler/compiler.h"
 
+static void print_champion_instructions(op_t **instructions)
+{
+    for (int i = 0; instructions[i]; ++i) {
+        m_putstr("Mnemonique: ", 1);
+        m_putstr(instructions[i]->mnemonique, 1);
+        m_putstr("\nNbr_args: ", 1);
+        m_putnbr(instructions[i]->nbr_args, 1);
+        m_putstr("Types:\n", 1);
+        for (int y = 0; MAX_ARGS_NUMBER > y; ++y) {
+            if (-1 == instructions[i]->type[y])
+                continue;
+            m_putnbr(y, 1);
+            m_putstr(": ", 1);
+            m_putnbr(instructions[i]->type[y], 1);
+            m_putchar('\n', 1);
+        }
+    }
+}
+
 static bool run(char *file)
 {
     stat_t *stat = m_stat(file, DEFAULT, complet);
@@ -15,10 +34,12 @@ static bool run(char *file)
     op_t **instructions = init_instructions(stat->content);
 
     if (NULL == stat || NULL == header || NULL == instructions)
-        return (false);    
+        return (false);
+    m_putstr("Get informations champions\n", 1);
     if (false ==
         get_champions_informations(instructions, header, stat->content))
         return (false);
+    print_champion_instructions(instructions);
     return (true);
 }
 
