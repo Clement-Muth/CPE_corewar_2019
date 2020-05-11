@@ -16,7 +16,7 @@ static fd_t m_fcreate(char *filepath, int flag, mode_t mode)
 
 static bool m_fwrite(fd_t fd, header_t *header)
 {
-    return ((write(fd, &header, sizeof(header_t))) ? (true) : (false));
+    return ((write(fd, header, sizeof(header_t))) ? (true) : (false));
 }
 
 static bool m_fclose(fd_t fd)
@@ -26,7 +26,7 @@ static bool m_fclose(fd_t fd)
 
 bool compile_n_write(header_t *header, op_t **instuctions, char *filepath)
 {
-    char *filecore = m_strcat(m_strncpy(filepath, '.'), ".cor");
+    char *filecore = m_strcat(m_strncpy(filepath, '.'), ".core");
     fd_t fd = m_fcreate(filecore, O_CREAT | O_WRONLY | O_TRUNC, 0666);
 
     return ((!fd || !m_fwrite(fd, header) || !m_fclose(fd)) ? (false) : (true));
