@@ -28,4 +28,7 @@ int *get_types(char *, char *, int);
 
 char **my_str_to_word_array(char *, char);
 
+/*          free            */
+void my_free(header_t *, op_t **, stat_t *);
+
 #endif /* !COMPILER_FUNCTION_H_ */

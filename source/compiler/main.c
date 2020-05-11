@@ -40,6 +40,7 @@ static bool run(char *file)
         get_champions_informations(instructions, header, stat->content))
         return (false);
     print_champion_instructions(instructions);
+    my_free(header, instructions, stat);
     return (true);
 }
 
