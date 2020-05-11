@@ -21,7 +21,8 @@ COMPILER		=	op.c			\
 				get_instruction.c	\
 				get_mnemonique.c	\
 				get_nb_arg.c		\
-				get_types.c
+				get_types.c		\
+				free.c
 
 ## ========================================================================== ##
 SRC				=	main.c	\
