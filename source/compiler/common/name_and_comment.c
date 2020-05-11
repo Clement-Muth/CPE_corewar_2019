@@ -17,7 +17,8 @@ static char get_comment(header_t *header, char *line)
         m_putstr("Name has already been set\n", 2);
         return (false);
     }
-    m_strcpy(header->comment, line);
+    m_strcpy(header->comment, line + 10);
+    header->comment[m_strlen(line + 10) - 2] = '\0';
     return (true);
 }
 
@@ -32,6 +33,7 @@ static char get_name(header_t *header, char *line)
         return (false);
     }
     m_strcpy(header->prog_name, line + 7);
+    header->prog_name[m_strlen(line + 7) - 2] = '\0';
     return (true);
 }
 
