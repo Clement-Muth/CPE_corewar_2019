@@ -58,4 +58,4 @@ int *get_size_params(char **args)
     size[0] = get_hexadecimal(tmp);
     size[1] = get_hexadecimal(hexa + 4);
     return (size);
-}    
+}

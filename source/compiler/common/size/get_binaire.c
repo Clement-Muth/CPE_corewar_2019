@@ -34,7 +34,7 @@ int get_binaire_from_hexa(char *hexa)
     char byte1[4] = "0000";
     char byte2[4] = "0000";
     char octet[8] = "00000000";
-    itn nbr = 0;
+    int nbr = 0;
 
     get_byte(byte1, hexa[0]);
     get_byte(byte2, hexa[1]);

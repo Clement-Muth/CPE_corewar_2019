@@ -5,9 +5,9 @@
 ** init
 */
 
-#include "compiler.h"
+#include "compiler/compiler.h"
 
-bool init(compiler_t *cmp)
+bool init(compiler_t *cmp, char *const restrict *const restrict av)
 {
     return (true);
 }

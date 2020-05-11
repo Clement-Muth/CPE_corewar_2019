@@ -5,10 +5,10 @@
 ** error
 */
 
-#include "compiler.h"
+#include "compiler/compiler.h"
 
 bool error(const int ac, char *const restrict *const restrict av)
 {
-    // if (ac != 2)
+    if (ac != 2) return (false);
     return (true);
 }

@@ -20,6 +20,7 @@ SRC 				= memalloc.c	\
 					  putnbr.c	\
 					  printt.c	\
 					  revstr.c	\
+					  strcat.c	\
 					  strcmp.c	\
 					  strdup.c	\
 					  strcpy.c	\

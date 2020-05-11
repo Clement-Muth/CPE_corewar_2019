@@ -28,6 +28,9 @@ int *get_types(char *, char *, int);
 
 char **my_str_to_word_array(char *, char);
 
+/*          process         */
+bool compile_n_write(header_t *header, op_t **instuctions, char *filepath);
+
 /*          free            */
 void my_free(header_t *, op_t **, stat_t *);
 

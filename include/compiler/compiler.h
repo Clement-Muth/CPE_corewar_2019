@@ -13,6 +13,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 #include "../library/string/include/string.h"
 #include "../library/stat/include/stat.h"

@@ -10,19 +10,20 @@ SUCCESS				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
 ## ========================================================================== ##
 PATH_COMPILER	=	./common/
 COMPILER		=	op.c			\
-				my_str_to_word_array.c	\
-				header.c		\
-				instruction.c		\
-				name_and_comment.c	\
-				check_command.c		\
-				check_args.c		\
-				check_label.c		\
-				check_types.c		\
-				get_instruction.c	\
-				get_mnemonique.c	\
-				get_nb_arg.c		\
-				get_types.c		\
-				free.c
+					process/compile_n_write.c	\
+					my_str_to_word_array.c	\
+					header.c		\
+					instruction.c		\
+					name_and_comment.c	\
+					check_command.c		\
+					check_args.c		\
+					check_label.c		\
+					check_types.c		\
+					get_instruction.c	\
+					get_mnemonique.c	\
+					get_nb_arg.c		\
+					get_types.c		\
+					free.c
 
 ## ========================================================================== ##
 SRC				=	main.c	\

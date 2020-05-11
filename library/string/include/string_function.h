@@ -30,6 +30,8 @@ length);
 
 void m_revstr(char *string, int length);
 
+char *m_strcat(char *str1, char *str2);
+
 char *m_strdup(const char *src);
 
 char *m_strcpy(char *__restrict__ dest, const char *__restrict__ src);

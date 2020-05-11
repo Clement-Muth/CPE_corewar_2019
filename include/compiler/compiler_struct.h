@@ -8,6 +8,7 @@
 #ifndef COMPILER_STRUCT_H_
 #define COMPILER_STRUCT_H_
 
+typedef int fd_t;
 typedef struct compiler_s
 {
 
