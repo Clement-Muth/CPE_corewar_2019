@@ -55,7 +55,6 @@ char *get_mnemonique(char *line)
 
     if (NULL == new)
         return (NULL);
-    m_putstr("Check\n", 1);
     if (false == check_mnemonique(new)) {
         free(new);
         return (NULL);

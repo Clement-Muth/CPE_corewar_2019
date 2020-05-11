@@ -39,10 +39,8 @@ bool get_champions_informations(op_t **instructions, header_t *header,
         m_putstr("A champion need instructions\n", 2);
         return (false);
     }
-    m_putstr("Get name and comment for the header\n", 1);
     if (false == get_name_and_comment(header, buf))
         return (false);
-    m_putstr("Get instructions\n", 1);
     for (int i = index + 1; buf[i]; ++i)
         if (false == add_instruction(instructions, buf[i]))
             return (false);
