@@ -11,14 +11,9 @@ static bool init_instruction(op_t *instruction, char *line)
 {
     int *type = NULL;
 
-    m_putstr(" - - - ", 1);
-    m_putstr(instruction->mnemonique, 1);
-    m_putstr(" - - - \n", 1);
-    m_putstr("Nbr args\n", 1);
     instruction->nbr_args = get_nb_arg(instruction->mnemonique, line);
     if (-1 == instruction->nbr_args)
         return (false);
-    m_putstr("Types\n", 1);
     type = get_types(instruction->mnemonique, line, instruction->nbr_args);
     if (NULL == type)
         return (false);
@@ -34,10 +29,8 @@ op_t *get_instruction(char *line)
 
     if (NULL == new)
         return (NULL);
-    m_putstr("Mnemonique\n", 1);
     new->mnemonique = get_mnemonique(line);
     if (NULL == new->mnemonique || false == init_instruction(new, line))
         return (NULL);
-    m_putstr("- - - - - - -\n", 1);
     return (new);
 }

@@ -15,7 +15,7 @@ static void print_champion_instructions(op_t **instructions)
         m_putstr(instructions[i]->mnemonique, 1);
         m_putstr("\nNbr_args: ", 1);
         m_putnbr(instructions[i]->nbr_args, 1);
-        m_putstr("Types:\n", 1);
+        m_putstr("\nTypes:\n", 1);
         for (int y = 0; MAX_ARGS_NUMBER > y; ++y) {
             if (-1 == instructions[i]->type[y])
                 continue;
@@ -35,7 +35,6 @@ static bool run(char *file)
 
     if (NULL == stat || NULL == header || NULL == instructions)
         return (false);
-    m_putstr("Get informations champions\n", 1);
     if (false ==
         get_champions_informations(instructions, header, stat->content))
         return (false);
