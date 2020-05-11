@@ -16,7 +16,7 @@ static void find_types(char **args, int *type)
             type[index] = T_REG;
         else if (DIRECT_CHAR == args[i][0])
             type[index] = T_DIR;
-        else 
+        else
             type[index] = T_IND;
         ++index;
     }
