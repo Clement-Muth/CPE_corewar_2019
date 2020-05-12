@@ -10,47 +10,53 @@ SUCCESS				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
 ## ==============================BINARY NAMES================================ ##
 VM_BIN			=	corewar
 ASM_BIN			=	asm
-BIN				=	$(VM_BIN) $(ASM_BIN)
+
+
+## ==============================SOURCE DIR================================== ##
+SRC_VM_DIR		=	source/vm/
+SRC_ASM_DIR		=	source/compiler/
 
 
 ## ==============================BINARY DIR================================== ##
-VM_DIR		=	./source/vm/
-ASM_DIR		=	./source/compiler/
+BIN_VM_DIR		=	vm/
+BIN_ASM_DIR		=	asm/
 
 
 ## ==============================BASICS VAR================================== ##
-CC				=	gcc
-OBJ 			=	$(SRC:.c=.o)
 RM				=	rm -rf
+CP				=	cp -rf
 DFLAGS			=	-g -Wfatal-errors -Wpedantic -Wextra \
 					-Wnonnull -Wmain -Wmissing-attributes -Wsequence-point -pg
 
-
 ## ==============================PROCESS MAKE================================ ##
-all:			$(BIN)
-
-## =============MAKE ASM============ ##
-$(ASM_BIN):
-	@(cd $(ASM_DIR) && make)
-	@(cp $(ASM_DIR)$(ASM_BIN) ./)
-
-
-## =============MAKE VM============ ##
-$(VM_BIN):
-	@(cd $(VM_DIR) && make)
-	@(cp $(VM_DIR)$(VM_BIN) ./)
+all:			| $(BIN_ASM_DIR) $(BIN_VM_DIR)
+				@(cd $(SRC_ASM_DIR) && make)
+				$(CP) $(SRC_ASM_DIR)/$(ASM_BIN) ./$(BIN_ASM_DIR)
+				@(cd $(SRC_VM_DIR) && make)
+				$(CP) $(SRC_VM_DIR)/$(VM_BIN) ./$(BIN_VM_DIR)
 
 
-vm:				$(VM_BIN)
-asm:			$(ASM_BIN)
+## =============CREATE ASM DIR============ ##
+$(BIN_ASM_DIR):
+				@mkdir -p $@
+				@$(call WARNING, "[ //!\ ] Creating folder ./asm")
 
+
+## =============CREATE VM DIR============ ##
+$(BIN_VM_DIR):
+				@mkdir -p $@
+				@$(call WARNING, "[ //!\ ] Creating folder ./vm")
+
+
+## ===============================CLEAN MAKE================================= ##
 clean:
 				$(RM) $(OBJ)
 				@$(MAKE) -C source/compiler/ clean
 				@$(MAKE) -C source/vm/ clean
 
 fclean:			clean
-				$(RM) $(BIN)
+				$(RM) asm/asm
+				$(RM) vm/corewar
 				@$(MAKE) -C source/compiler/ fclean
 				@$(MAKE) -C source/vm/ fclean
 
@@ -59,10 +65,3 @@ re:				fclean all
 				@$(MAKE) -C source/vm/ re
 
 .PHONY:			 all, fclean, re, library
-
-## ========================================================================== ##
-%.o: %.c
-				@(echo -e "\033[32m[Controller] :[\033[31m \c")
-				@(echo -e "$@ \033[32m]\033[0m\033[0K")
-				@($(CC) $(CFLAGS) $(LDFLAGS) -c -o $@ $<)
-				@(echo -e "\033[2F")
