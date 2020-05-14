@@ -12,6 +12,8 @@ PATH_VM	=	common/
 VM		=	error/error.c	\
 			error/print_usage.c	\
 			init/init_champion.c	\
+			init/init_struct.c	\
+			init/init_process.c	\
 
 
 ## ========================================================================== ##
@@ -38,7 +40,7 @@ DFLAGS			=	-g -Wfatal-errors -Wpedantic -Wextra \
 all:			$(BIN)
 
 $(BIN):			$(OBJ) lib
-				@$(CC) -o $(BIN) $(OBJ) $(LDFLAGS)
+				@$(CC) -g -o $(BIN) $(OBJ) $(LDFLAGS)
 
 
 ## =============MAKE LIB============= ##

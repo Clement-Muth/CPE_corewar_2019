@@ -11,26 +11,37 @@ static bool count_champion(vm_t *vm, const int ac,
     char *const restrict *const restrict av)
 {
     int str_len = 0;
-    int i = 0;
 
-    for (int i = 0; i < ac; ++i) {
+    for (int i = 1; i < ac; ++i) {
         if (av[i][m_strlen(av[i]) - 1] == 'r' &&
             av[i][m_strlen(av[i]) - 2] == 'o' &&
             av[i][m_strlen(av[i]) - 3] == 'c' &&
             av[i][m_strlen(av[i]) - 4] == '.') {
             vm->data->nbr_champ++;
-            }
+        }
     }
+    if (vm->data->nbr_champ < 2) {
+        printf("It's enough champions\n");
+        return (false);
+    } else if (vm->data->nbr_champ > 4) {
+        printf("Is must be maximum 4 champions\n");
+        return (false);
+    }
+    return (true);
+}
+
+static bool init_one_champ(champion_t champ, vm_t *vm)
+{
     return (true);
 }
 
 bool init_champion(vm_t *vm, const int ac,
     char *const restrict *const restrict av)
 {
-    printf("It's not a .cor file\n");
-    if (count_champion(vm, ac, av)) {
-        printf("It's not a .cor file\n");
+    if (count_champion(vm, ac, av) == false)
         return (false);
-    }
+    for (int i = 0; i != vm->data->nbr_champ; ++i)
+        if (init_one_champ(vm->data->champ[i], vm) == false)
+            return (false);
     return (true);
 }

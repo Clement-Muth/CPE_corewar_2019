@@ -10,8 +10,12 @@
 static bool init(vm_t *vm, const int ac,
     char *const restrict *const restrict av)
 {
-    if (init_champion(vm, ac, av))
+    if (init_struct(vm) == false)
+        return (false);
+    if (init_champion(vm, ac, av) == false)
         return(false);
+    if (init_process(vm, ac, av) == false)
+        return (false);
     return (true);
 }
 
@@ -35,12 +39,11 @@ static bool vm(const int ac, char *const restrict *const restrict av)
 {
     vm_t vm;
     
-    if (error(ac, av))
+    if (error(ac, av) == false)
         return (false);
-     printf("It's not a .cor file\n");
-    if (init(&vm, ac, av))
+    if (init(&vm, ac, av) == false)
         return (false);
-    if (process(&vm))
+    if (process(&vm) == false)
         return (false);
     return (true);
 }
