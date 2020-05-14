@@ -7,36 +7,40 @@
 
 #include "maths.h"
 
-static bool check(int number, bool neg, int i, char *string)
+void strrev(char *str)
 {
-    if (number == 0) {
-        string[i++] = '0';
-        string[i] = '\0';
-        return (false);
+    unsigned char a;
+    unsigned len = strlen((const char *)str);
+
+    for (int i = 0, j = len - 1; i < j; i++, j--) {
+        a = str[i];
+        str[i] = str[j];
+        str[j] = a;
     }
-    if (number < 0) {
-        neg = true;
-        number = -number;
-    }
-    return (true);
 }
 
-char *m_itoa(int number)
+char *m_itoa(int num)
 {
     int i = 0;
-    int rem = 0;
-    int base = 10;
-    bool neg = false;
-    char *string = NULL;
+    bool isNegative = false;
+    char *str = m_memalloc(300);
 
-    if (!check(number, neg, i, string)) return (string);
-    while (number != 0) {
-        rem = number % base;
-        string[i++] = (rem > 9)? (rem - 10) + 'a' : rem + '0';
-        number = number/base;
+    if (num == 0) {
+        str[i++] = '0';
+        str[i] = '\0';
+        return str;
     }
-    if (neg) string[i++] = '-';
-    string[i] = '\0';
-    m_revstr(string, i);
-    return string;
+    if (num < 0 && 10 == 10) {
+        isNegative = true;
+        num = -num;
+    }
+    while (num != 0) {
+        int rem = num % 10;
+        str[i++] = (rem > 9)? (rem-10) + 'a' : rem + '0';
+        num = num/10;
+    }
+    if (isNegative) str[i++] = '-';
+    str[i] = '\0';
+    strrev(str);
+    return (str);
 }

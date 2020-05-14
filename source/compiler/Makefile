@@ -5,12 +5,13 @@
 ## Makefile
 ##
 
-SUCCESS				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
+SUCCESS			=	/bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
+
+COMMON			=	./common
 
 ## ========================================================================== ##
-PATH_COMPILER	=	./common/
+PATH_COMPILER	=	$(COMMON)/
 COMPILER		=	op.c			\
-					process/compile_n_write.c	\
 					my_str_to_word_array.c	\
 					header.c		\
 					instruction.c		\
@@ -25,9 +26,16 @@ COMPILER		=	op.c			\
 					get_types.c		\
 					free.c
 
+
+PATH_PROCESS	=	$(COMMON)/process/
+PROCESS			=	compile_n_write.c	\
+					write_header.c	\
+					write_instructs.c	\
+
 ## ========================================================================== ##
 SRC				=	main.c	\
 					$(addprefix $(PATH_COMPILER), $(COMPILER))	\
+					$(addprefix $(PATH_PROCESS), $(PROCESS))	\
 
 BIN				= 	asm
 

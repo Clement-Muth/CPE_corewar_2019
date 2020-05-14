@@ -9,6 +9,12 @@
 
 void m_revstr(char *string, int length)
 {
-    for (int start = 0, end = length - 1; start < end; start++, end--);
-        // swap(*(string + start), *(string + end));
+    unsigned char a;
+    unsigned len = m_strlen(string);
+
+    for (int i = 0, j = len - 1; i < j; i++, j--) {
+        a = string[i];
+        string[i] = string[j];
+        string[j] = a;
+    }
 }
