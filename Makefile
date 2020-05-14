@@ -19,7 +19,7 @@ SRC_ASM_DIR		=	source/compiler/
 
 ## ==============================BINARY DIR================================== ##
 BIN_VM_DIR		=	vm/
-BIN_ASM_DIR		=	asm/
+BIN_ASM_DIR		=	compiler/
 
 
 ## ==============================BASICS VAR================================== ##
