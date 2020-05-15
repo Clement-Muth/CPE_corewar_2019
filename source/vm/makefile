@@ -14,10 +14,12 @@ VM		=	error/error.c	\
 			init/init_champion.c	\
 			init/init_struct.c	\
 			init/init_process.c	\
+			utils/get_global_int.c	\
 
 
 ## ========================================================================== ##
 SRC				=	main.c	\
+					free_vm.c	\
 					$(addprefix $(PATH_VM), $(VM))	\
 
 BIN				= 	corewar
@@ -40,7 +42,7 @@ DFLAGS			=	-g -Wfatal-errors -Wpedantic -Wextra \
 all:			$(BIN)
 
 $(BIN):			$(OBJ) lib
-				@$(CC) -g -o $(BIN) $(OBJ) $(LDFLAGS)
+				@$(CC) -o $(BIN) $(OBJ) $(LDFLAGS)
 
 
 ## =============MAKE LIB============= ##
@@ -81,5 +83,5 @@ re:				fclean all
 %.o: %.c
 				@(echo -e "\033[32m[Controller] :[\033[31m \c")
 				@(echo -e "$@ \033[32m]\033[0m\033[0K")
-				@($(CC) $(LDFLAGS) -c -o $@ $<)
+				@($(CC) $(LDFLAGS) -c -o  $@ $<)
 				@(echo -e "\033[2F")

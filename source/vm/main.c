@@ -45,6 +45,7 @@ static bool vm(const int ac, char *const restrict *const restrict av)
         return (false);
     if (process(&vm) == false)
         return (false);
+    free_vm(&vm);
     return (true);
 }
 
