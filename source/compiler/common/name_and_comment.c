@@ -9,6 +9,8 @@
 
 static char get_comment(header_t *header, char *line)
 {
+    char *tmp = NULL;
+
     if (m_strlen(line) > COMMENT_LENGTH) {
         m_putstr("Champion 's comment is too long\n", 2);
         return (false);
@@ -17,12 +19,17 @@ static char get_comment(header_t *header, char *line)
         m_putstr("Name has already been set\n", 2);
         return (false);
     }
-    m_strcpy(header->comment, line);
+    tmp = get_info(line);
+    if (NULL == tmp)
+        return (false);
+    m_strcpy(header->comment, tmp);
     return (true);
 }
 
 static char get_name(header_t *header, char *line)
 {
+    char *tmp = NULL;
+
     if (m_strlen(line) > PROG_NAME_LENGTH) {
         m_putstr("Champion's name is too long\n", 2);
         return (false);
@@ -31,7 +38,10 @@ static char get_name(header_t *header, char *line)
         m_putstr("Name has already been set\n", 2);
         return (false);
     }
-    m_strcpy(header->prog_name, line + 7);
+    tmp = get_info(line);
+    if (NULL == tmp)
+        return (false);
+    m_strcpy(header->prog_name, tmp);
     return (true);
 }
 

@@ -8,8 +8,12 @@
 #include <stddef.h>
 #include "compiler/compiler.h"
 
-static void print_champion_instructions(op_t **instructions)
+static void print_champion_instructions(op_t **instructions, header_t *header)
 {
+    m_putstr(header->prog_name, 1);
+    m_putstr(", ", 1);
+    m_putstr(header->comment, 1);
+    m_putchar('\n', 1);
     for (int i = 0; instructions[i]; ++i) {
         m_putstr("Mnemonique: ", 1);
         m_putstr(instructions[i]->mnemonique, 1);
@@ -38,7 +42,7 @@ static bool run(char *file)
     if (false ==
         get_champions_informations(instructions, header, stat->content))
         return (false);
-    print_champion_instructions(instructions);
+    print_champion_instructions(instructions, header);
     my_free(header, instructions, stat);
     return (true);
 }

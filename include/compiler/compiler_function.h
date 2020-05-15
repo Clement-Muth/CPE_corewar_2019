@@ -17,6 +17,7 @@ header_t *init_header(void);
 op_t **init_instructions(char **);
 bool get_champions_informations(op_t **, header_t *, char **);
 bool get_name_and_comment(header_t *, char **);
+char *get_info(char *);
 int check_command(char *);
 bool check_args(char **);
 bool check_label(char *);
