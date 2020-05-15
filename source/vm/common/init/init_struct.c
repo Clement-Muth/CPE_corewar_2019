@@ -10,6 +10,7 @@
 static bool init_data(vm_t *vm)
 {
     vm->data = malloc(sizeof(data_t));
+    vm->commande = malloc(sizeof(commande_t));
     vm->data->nbr_champ = 0;
     return (true);
 }

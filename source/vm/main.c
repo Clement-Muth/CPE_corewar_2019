@@ -16,12 +16,16 @@ static bool init(vm_t *vm, const int ac,
         return(false);
     if (init_process(vm, ac, av) == false)
         return (false);
+    init_commande(vm->commande);
+    if (init_ram(vm) == false)
+        return (false);
     return (true);
 }
 
 static bool process(vm_t *vm)
 {
-    //fight_process(vm);
+    if (fight_process(vm) == false)
+        return (false);
     return (true);
 }
 

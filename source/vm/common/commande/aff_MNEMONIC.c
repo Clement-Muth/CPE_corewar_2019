@@ -7,7 +7,7 @@
 
 #include "vm/vm.h"
 
-bool error(const int ac, char *const restrict *const restrict av)
+void *aff_MNEMONIC(void)
 {
-    return (true);
+    printf("%s\n", "cc");
 }

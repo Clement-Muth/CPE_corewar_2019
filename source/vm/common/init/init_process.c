@@ -34,15 +34,17 @@ static bool get_header_file(int fd, champion_t *champ)
 
 static bool get_instruction_file(int fd, champion_t *champ)
 {
-    if (read(fd, &champ->instruction, champ->file.prog_size) < 0) {
+    champ->instruction = malloc(champ->file.prog_size);
+    if (read(fd, champ->instruction, champ->file.prog_size) < 0) {
         printf("There is a probleme whit you instructions\n");
         return (false);
     }
+    //[ERREUR] instruction.
     return (true);
 }
 
 static bool process_constructor(vm_t *vm,
-    char *const restrict path, int i)
+    char *const restrict path)
 {
     int fd = open(path, O_RDONLY);
 
@@ -63,7 +65,7 @@ bool init_process(vm_t *vm, const int ac,
 {
     for (int i = 1; i != ac; i++) {
         if (is_a_correct_file(av[i]) == false ||
-            process_constructor(vm, av[i], i) == false)
+            process_constructor(vm, av[i]) == false)
             return (false);
     }
     return (true);
