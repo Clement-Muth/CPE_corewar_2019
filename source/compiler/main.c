@@ -70,7 +70,8 @@ static bool check_arguments(int ac, char *av[])
     for (int i = 0; av[1][i]; ++i)
         if ('.' == av[1][i])
             pos = i;
-    if (-1 == pos || false == m_strcmp(av[1] + pos, ".s")) {
+    if (-1 == pos || '\0' == av[1][pos + 1] ||
+        false == m_strcmp(av[1] + pos, ".s")) {
         m_putstr("Argument must be in assembler[.s]\n", 2);
         return (false);
     }
