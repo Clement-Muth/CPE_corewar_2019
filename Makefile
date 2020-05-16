@@ -5,7 +5,8 @@
 ## Makefile
 ##
 
-SUCCESS				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
+SUCCESS				=	/bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
+DONE				=	/bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[34m $1\x1b[0m"
 
 ## ==============================BINARY NAMES================================ ##
 VM_BIN			=	corewar
@@ -25,15 +26,18 @@ BIN_ASM_DIR		=	compiler/
 ## ==============================BASICS VAR================================== ##
 RM				=	rm -rf
 CP				=	cp -rf
+MAKEFLAGS 		+=	--no-print-directory
 DFLAGS			=	-g -Wfatal-errors -Wpedantic -Wextra \
 					-Wnonnull -Wmain -Wmissing-attributes -Wsequence-point -pg
 
 ## ==============================PROCESS MAKE================================ ##
 all:			| $(BIN_ASM_DIR) $(BIN_VM_DIR) lib
 				@(cd $(SRC_ASM_DIR) && make)
-				$(CP) $(SRC_ASM_DIR)/$(ASM_BIN) ./$(BIN_ASM_DIR)
+				@$(CP) $(SRC_ASM_DIR)/$(ASM_BIN) ./$(BIN_ASM_DIR)
+				@$(call DONE, "The champions are ready to fight")
 				@(cd $(SRC_VM_DIR) && make)
-				$(CP) $(SRC_VM_DIR)/$(VM_BIN) ./$(BIN_VM_DIR)
+				@$(CP) $(SRC_VM_DIR)/$(VM_BIN) ./$(BIN_VM_DIR)
+				@$(call DONE, "The VM is ready to host the champions")
 
 
 ## =============CREATE ASM DIR============ ##
@@ -80,9 +84,5 @@ fclean:			clean
 re:				fclean all
 				@$(MAKE) -C source/compiler/ re
 				@$(MAKE) -C source/vm/ re
-				@$(MAKE) -C library/assert/ re
-				@$(MAKE) -C library/maths/ re
-				@$(MAKE) -C library/stat/ re
-				@$(MAKE) -C library/string/ re
 
 .PHONY:			 all, fclean, re, library

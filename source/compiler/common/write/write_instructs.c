@@ -6,18 +6,14 @@
 */
 
 #include "compiler/compiler.h"
-#define TYPE (char)instruction->type[i]
-#define BIT (b - 1) * 8
-#define CHECK_MNEMO(arg) ((arg != 1 && arg != 9 && arg != 12 && arg != 15) ? \
-    (true) : (false))
 
 static int get_mnemonique_id(char *mnemonique)
 {
     int i = 0;
 
-    for (i = 0; op_tab[i].mnemonique; i++) {
-        if (m_strcmp(op_tab[i].mnemonique, mnemonique)) return (i + 1);
-    }
+    for (i = 0; op_tab[i].mnemonique; i++)
+        if (m_strcmp(op_tab[i].mnemonique, mnemonique))
+            return (i + 1);
     return (i + 1);
 }
 
@@ -54,14 +50,14 @@ static bool write_arg(op_t *instruction, char *arg, fd_t fd, bool wpb)
 {
     char **tmp_arg = separate_arg_value(arg);
 
-    if (wpb) param_convert(instruction, fd);
-    for (int i = 0; tmp_arg[i]; i++) {
+    if (wpb)
+        param_convert(instruction, fd);
+    for (int i = 0; tmp_arg[i]; i++)
         param_write(m_atoi(tmp_arg[i]),
         (TYPE == T_REG) ?
         (1) : (TYPE == T_IND) ?
         (2) : (4)
         , fd);
-    }
 }
 
 bool write_instruct(op_t **instructions, char **args, fd_t fd)
@@ -73,7 +69,6 @@ bool write_instruct(op_t **instructions, char **args, fd_t fd)
         param_write(mnemo_id, 1, fd);
         write_arg(instructions[i], args[i], fd,
             (CHECK_MNEMO(mnemo_id) ? (true) : (false)));
-        // exit(0);
     }
     return (true);
 }

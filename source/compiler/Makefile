@@ -6,6 +6,7 @@
 ##
 
 SUCCESS			=	/bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
+DONE			=	/bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[34m $1\x1b[0m"
 
 COMMON			=	./common
 
@@ -88,7 +89,7 @@ re:				fclean all
 
 ## ========================================================================== ##
 %.o: %.c
-				@(echo -e "\033[32m[Controller] :[\033[31m \c")
-				@(echo -e "$@ \033[32m]\033[0m\033[0K")
+				@(echo "\033[32m[Controller] :[\033[31m \c")
+				@(echo "$@ \033[32m]\033[0m\033[0K")
 				@($(CC) $(LDFLAGS) -c -o $@ $<)
-				@(echo -e "\033[2F")
+				@(echo "\033[2F")

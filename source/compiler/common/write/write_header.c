@@ -42,7 +42,8 @@ static void print_size(fd_t fd)
 
 static void write_blank(fd_t fd, int lim, int size)
 {
-    for (int l = size; l <= lim; l++) write(fd, "\0", 1);
+    for (int l = size; l <= lim; l++)
+        write(fd, "\0", 1);
 }
 
 static void print_header(header_t *header, fd_t fd)

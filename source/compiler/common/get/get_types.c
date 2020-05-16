@@ -33,30 +33,34 @@ static char **get_args(char *line, char **tmp)
     return (tmp);
 }
 
+static void get_m_arg(int n, char **tmp, char **args)
+{
+    int j = 0;
+
+    for (j = 0; tmp[j]; j++);
+    if (j == 1)
+        args[n] = m_strdup(tmp[0]);
+    else if (j == 3)
+        args[n] = m_strdup(strcat(tmp[0], strcat(tmp[1], tmp[2])));
+}
+
 int *get_types(char *name, char *line, int nb_arg, char **args)
 {
     static int n = 0;
     int *type = malloc(sizeof(int) * MAX_ARGS_NUMBER);
     char **tmp = get_args(line, tmp);
-    int j = 0;
 
-    for (j = 0; tmp[j]; j++);
-    if (j == 1) args[n] = m_strdup(tmp[0]);
-    else if (j == 3) args[n] = m_strdup(strcat(tmp[0], strcat(tmp[1], tmp[2])));
+    get_m_arg(n, tmp, args);
     if (NULL == tmp || NULL == type)
         return (NULL);
     for (int i = 0; MAX_ARGS_NUMBER > i; ++i)
         type[i] = -1;
     find_types(tmp, type);
     if (false == check_types(name, type)) {
-        for (int i = 0; tmp[i]; ++i)
-            free(tmp[i]);
-        free(tmp);
+        m_free(tmp);
         return (NULL);
     }
-    for (int i = 0; tmp[i]; ++i)
-        free(tmp[i]);
-    free(tmp);
+    m_free(tmp);
     n++;
     return (type);
 }

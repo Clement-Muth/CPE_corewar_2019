@@ -12,7 +12,8 @@ DONE				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[34m $1\x1b[0m"
 
 LIB 				= lib_string.a
 
-SRC 				= memalloc.c	\
+SRC 				= free.c	\
+					  memalloc.c	\
 					  strlen.c	\
 					  memcpy.c	\
 					  putchar.c	\

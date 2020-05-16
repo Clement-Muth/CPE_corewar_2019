@@ -44,7 +44,6 @@ static bool run(char *file)
     if (false ==
         get_champions_informations(instructions, header, stat->content, &cmp))
         return (false);
-    // print_champion_instructions(instructions);
     if (!compile_n_write(header, instructions, cmp.args, file)) return (false);
     my_free(header, instructions, stat);
     return (true);

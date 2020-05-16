@@ -8,6 +8,8 @@
 #ifndef STRING_FUNCTION_H_
 #define STRING_FUNCTION_H_
 
+void m_free(char **var);
+
 bool m_strcmp(const char *__restrict__ comparing, const char *__restrict__
 compared);
 

@@ -7,15 +7,24 @@
 
 #include "maths.h"
 
-void strrev(char *str)
+static void strrev(char *str)
 {
     unsigned char a;
-    unsigned len = strlen((const char *)str);
+    unsigned len = m_strlen(str);
 
     for (int i = 0, j = len - 1; i < j; i++, j--) {
         a = str[i];
         str[i] = str[j];
         str[j] = a;
+    }
+}
+
+static void tmp(int num, int i, char *str)
+{
+    while (num != 0) {
+        int rem = num % 10;
+        str[i++] = (rem > 9)? (rem-10) + 'a' : rem + '0';
+        num = num/10;
     }
 }
 
@@ -34,11 +43,7 @@ char *m_itoa(int num)
         isNegative = true;
         num = -num;
     }
-    while (num != 0) {
-        int rem = num % 10;
-        str[i++] = (rem > 9)? (rem-10) + 'a' : rem + '0';
-        num = num/10;
-    }
+    tmp(num, i, str);
     if (isNegative) str[i++] = '-';
     str[i] = '\0';
     strrev(str);
