@@ -29,6 +29,7 @@ SRC 				= free.c	\
 					  strnlcpy.c	\
 					  stricpy.c	\
 					  strnlen.c	\
+					  swap.c
 
 
 CFLAGS 				= -Wall -I./include

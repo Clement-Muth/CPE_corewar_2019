@@ -8,4 +8,6 @@
 #ifndef STRING_STRUCT_H_
 #define STRING_STRUCT_H_
 
+typedef int fd_t;
+
 #endif /* !STRING_STRUCT_H_ */

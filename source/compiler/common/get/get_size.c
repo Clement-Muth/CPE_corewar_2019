@@ -15,7 +15,7 @@ static char get_hexadecimal(char *str)
     int	table[4] = {8, 4, 2, 1};
     int nbr = 0;
 
-    for	(int i = 0; 4 > i; ++i) {
+    for (int i = 0; 4 > i; ++i) {
         if ('0' == str[i])
             continue;
         nbr += table[i];
@@ -44,18 +44,4 @@ static void get_param_octet(char **args, char *hexa)
         set_size_param(hexa, index, args[i][0]);
         index += 2;
     }
-}
-
-int *get_size_params(char **args)
-{
-    // char hexa[8] = "00000000";
-    // char size[2] = "00";
-    // char tmp[4] = "0000";
-
-    // get_param_octet(args, hexa);
-    // for (int i = 0; 4 > i; ++i)
-    //     tmp[i] = hexa[i];
-    // size[0] = get_hexadecimal(tmp);
-    // size[1] = get_hexadecimal(hexa + 4);
-    // return (m_atoi(size));
 }

@@ -44,4 +44,6 @@ char *m_strnlcpy(const char *__restrict__ src, const char beg, char end);
 
 char *m_stricpy(const char *__restrict__ src, const char ign);
 
+void swap(unsigned int *to_swap, fd_t fd);
+
 #endif /* !STRING_FUNCTION_H_ */
