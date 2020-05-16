@@ -15,9 +15,11 @@
 #include <unistd.h>
 #include <limits.h>
 
+#include "../../string/include/string.h"
+#include "../../assert/include/assert.h"
+
 #include "maths_struct.h"
 #include "maths_define.h"
 #include "maths_function.h"
-#include "../../string/include/string.h"
 
 #endif /* !MATHS_H_ */

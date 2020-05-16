@@ -17,6 +17,7 @@
 #include "../library/string/include/string.h"
 #include "../library/stat/include/stat.h"
 #include "../library/maths/include/maths.h"
+#include "../library/assert/include/assert.h"
 
 #include "vm_define.h"
 #include "vm_struct.h"
