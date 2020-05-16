@@ -29,6 +29,7 @@ static bool get_header_file(int fd, champion_t *champ)
         printf("The size of the .cor file is to large.\n");
         return (false);
     }
+    printf("%s\n", champ->file.prog_name);
     return (true);
 }
 

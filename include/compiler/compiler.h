@@ -22,6 +22,7 @@
 #include "../library/maths/include/maths.h"
 
 #include "op.h"
+#include "compiler_define.h"
 #include "compiler_struct.h"
 #include "compiler_function.h"
 

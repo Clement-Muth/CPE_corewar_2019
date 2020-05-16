@@ -5,29 +5,54 @@
 ## Makefile
 ##
 
-SUCCESS				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
+SUCCESS			=	/bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
+DONE			=	/bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[34m $1\x1b[0m"
+
+COMMON			=	./common
 
 ## ========================================================================== ##
-PATH_COMPILER	=	./common/
-COMPILER		=	op.c			\
-					process/compile_n_write.c	\
+PATH_BASIC		=	$(COMMON)/basic/
+BASIC			=	free.c	\
+					header.c	\
+					instruction.c	\
 					my_str_to_word_array.c	\
-					header.c		\
-					instruction.c		\
 					name_and_comment.c	\
-					check_command.c		\
-					check_args.c		\
-					check_label.c		\
-					check_types.c		\
+					op.c
+
+PATH_CHECK		=	$(COMMON)/check/
+CHECK			=	check_args.c	\
+					check_command.c	\
+					check_label.c	\
+					check_types.c	\
+
+PATH_ERROR		=	$(COMMON)/error/
+ERROR			=	error.c
+
+PATH_GET		=	$(COMMON)/get/
+GET				=	get_info.c	\
 					get_instruction.c	\
 					get_mnemonique.c	\
-					get_nb_arg.c		\
-					get_types.c		\
-					free.c
+					get_nb_arg.c	\
+					get_types.c	\
+					get_binaire.c	\
+					get_size.c
+
+PATH_PROCESS	=	$(COMMON)/process/
+PROCESS			=	compile_n_write.c	\
+					separate_arg_value.c
+
+PATH_WRITE		=	$(COMMON)/write/
+WRITE			=	write_header.c	\
+					write_instructs.c
 
 ## ========================================================================== ##
 SRC				=	main.c	\
-					$(addprefix $(PATH_COMPILER), $(COMPILER))	\
+					$(addprefix $(PATH_BASIC), $(BASIC))	\
+					$(addprefix $(PATH_CHECK), $(CHECK))	\
+					$(addprefix $(PATH_ERROR), $(ERROR))	\
+					$(addprefix $(PATH_GET), $(GET))	\
+					$(addprefix $(PATH_PROCESS), $(PROCESS))	\
+					$(addprefix $(PATH_WRITE), $(WRITE))
 
 BIN				= 	asm
 
@@ -48,39 +73,15 @@ DFLAGS			=	-g -Wfatal-errors -Wpedantic -Wextra \
 
 all:			$(BIN)
 
-$(BIN):			$(OBJ) lib
+$(BIN):			$(OBJ)
 				@$(CC) -o $(BIN) $(OBJ) $(LDFLAGS)
-
-
-## =============MAKE LIB============= ##
-lib:
-				@$(MAKE) -C ../../library/string/
-				@$(MAKE) -C ../../library/assert/
-				@$(MAKE) -C ../../library/stat/
-				@$(MAKE) -C ../../library/maths/
-
 
 clean:
 				$(RM) $(OBJ)
-				@$(MAKE) -C ../../library/string/ clean
-				@$(MAKE) -C ../../library/assert/ clean
-				@$(MAKE) -C ../../library/stat/ clean
-				@$(MAKE) -C ../../library/maths/ clean
 
 
 fclean:			clean
 				$(RM) $(BIN)
-				@$(MAKE) -C ../../library/string/ fclean
-				@$(MAKE) -C ../../library/assert/ fclean
-				@$(MAKE) -C ../../library/stat/ fclean
-				@$(MAKE) -C ../../library/maths/ fclean
-
-re_lib:
-				@$(MAKE) -C ../../library/string/ re
-				@$(MAKE) -C ../../library/assert/ re
-				@$(MAKE) -C ../../library/stat/ re
-				@$(MAKE) -C ../../library/maths/ re
-
 
 re:				fclean all
 
@@ -88,7 +89,7 @@ re:				fclean all
 
 ## ========================================================================== ##
 %.o: %.c
-				@(echo -e "\033[32m[Controller] :[\033[31m \c")
-				@(echo -e "$@ \033[32m]\033[0m\033[0K")
+				@(echo "\033[32m[Controller] :[\033[31m \c")
+				@(echo "$@ \033[32m]\033[0m\033[0K")
 				@($(CC) $(LDFLAGS) -c -o $@ $<)
-				@(echo -e "\033[2F")
+				@(echo "\033[2F")

@@ -45,7 +45,6 @@ static char *find_mnemonique(char *line)
     if (NULL == mnemonique)
         return (NULL);
     my_strncpy(mnemonique, line, index);
-//    m_memcpy(mnemonique, line, index);
     return (mnemonique);
 }
 

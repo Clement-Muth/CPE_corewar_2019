@@ -21,7 +21,7 @@ SRC 				= atoi.c	\
 
 CFLAGS 				= -Wall -I./include
 
-LDFLAGS				= -L../../ -l_string
+LDFLAGS				= -L../../ -l_string -l_assert
 
 AR 					= @ar rc
 

@@ -8,6 +8,8 @@
 #ifndef STRING_FUNCTION_H_
 #define STRING_FUNCTION_H_
 
+void m_free(char **var);
+
 bool m_strcmp(const char *__restrict__ comparing, const char *__restrict__
 compared);
 
@@ -41,5 +43,7 @@ char *m_strncpy(const char *src, const char n);
 char *m_strnlcpy(const char *__restrict__ src, const char beg, char end);
 
 char *m_stricpy(const char *__restrict__ src, const char ign);
+
+void swap(unsigned int *to_swap, fd_t fd);
 
 #endif /* !STRING_FUNCTION_H_ */

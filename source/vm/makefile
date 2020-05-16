@@ -60,39 +60,14 @@ DFLAGS			=	-g -Wfatal-errors -Wpedantic -Wextra \
 
 all:			$(BIN)
 
-$(BIN):			$(OBJ) lib
+$(BIN):			$(OBJ)
 				@$(CC) -o $(BIN) $(OBJ) $(LDFLAGS)
-
-
-## =============MAKE LIB============= ##
-lib:
-				@$(MAKE) -C ../../library/string/
-				@$(MAKE) -C ../../library/assert/
-				@$(MAKE) -C ../../library/stat/
-				@$(MAKE) -C ../../library/maths/
-
 
 clean:
 				$(RM) $(OBJ)
-				@$(MAKE) -C ../../library/string/ clean
-				@$(MAKE) -C ../../library/assert/ clean
-				@$(MAKE) -C ../../library/stat/ clean
-				@$(MAKE) -C ../../library/maths/ clean
-
 
 fclean:			clean
 				$(RM) $(BIN)
-				@$(MAKE) -C ../../library/string/ fclean
-				@$(MAKE) -C ../../library/assert/ fclean
-				@$(MAKE) -C ../../library/stat/ fclean
-				@$(MAKE) -C ../../library/maths/ fclean
-
-re_lib:
-				@$(MAKE) -C ../../library/string/ re
-				@$(MAKE) -C ../../library/assert/ re
-				@$(MAKE) -C ../../library/stat/ re
-				@$(MAKE) -C ../../library/maths/ re
-
 
 re:				fclean all
 
@@ -100,7 +75,14 @@ re:				fclean all
 
 ## ========================================================================== ##
 %.o: %.c
+<<<<<<< HEAD
 				@(echo -e "\033[32m[Controller] :[\033[31m \c")
 				@(echo -e "$@ \033[32m]\033[0m\033[0K")
 				@($(CC) $(LDFLAGS) -c -o  $@ $<)
 				@(echo -e "\033[2F")
+=======
+				@(echo "\033[32m[Controller] :[\033[31m \c")
+				@(echo "$@ \033[32m]\033[0m\033[0K")
+				@($(CC) $(LDFLAGS) -c -o $@ $<)
+				@(echo "\033[2F")
+>>>>>>> 56dbd9662b4069b35a3071ee1684399e1611a44a

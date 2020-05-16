@@ -14,20 +14,19 @@ static fd_t m_fcreate(char *filepath, int flag, mode_t mode)
     return ((fd = open(filepath, flag, mode)) ? (fd) : (false));
 }
 
-static bool m_fwrite(fd_t fd, header_t *header)
-{
-    return ((write(fd, header, sizeof(header_t))) ? (true) : (false));
-}
-
 static bool m_fclose(fd_t fd)
 {
     return ((close(fd)) ? (true) : (false));
 }
 
-bool compile_n_write(header_t *header, op_t **instuctions, char *filepath)
+bool compile_n_write(header_t *header, op_t **instuctions, char **args,
+char *filepath)
 {
-    char *filecore = m_strcat(m_strncpy(filepath, '.'), ".core");
+    char *filecore = m_strcat(m_strncpy(filepath, '.'), ".cor");
     fd_t fd = m_fcreate(filecore, O_CREAT | O_WRONLY | O_TRUNC, 0666);
 
-    return ((!fd || !m_fwrite(fd, header) || !m_fclose(fd)) ? (false) : (true));
+    return (
+        (!write_header(header, fd) || !write_instruct(instuctions, args, fd))
+        ? (false) : m_fclose(fd)
+    );
 }

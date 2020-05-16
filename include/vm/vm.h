@@ -21,6 +21,7 @@
 #include "../library/stat/include/stat.h"
 #include "../library/assert/include/assert.h"
 #include "../library/maths/include/maths.h"
+#include "../library/assert/include/assert.h"
 
 #include "op.h"
 #include "vm_define.h"

@@ -11,7 +11,7 @@
 typedef int fd_t;
 typedef struct compiler_s
 {
-
+    char **args;
 } compiler_t;
 
 

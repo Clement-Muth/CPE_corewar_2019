@@ -10,9 +10,9 @@
 
 static void get_byte(char *byte, char c)
 {
-    char hexa_table[15] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+    char hexa_table[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
         'A', 'B', 'C', 'D', 'E', 'F'};
-    char int_table[15] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
+    char int_table[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
         15};
     int nbr = 0;
     int pow = 4;
@@ -21,8 +21,8 @@ static void get_byte(char *byte, char c)
         if (c == hexa_table[i])
             nbr = int_table[i];
     for (int i = 0; 4 > i; ++i) {
-        if (nbr >= my_pow(2, pow)) {
-            nbr -= my_pow(2, pow);
+        if (nbr >= m_pow(2, pow)) {
+            nbr -= m_pow(2, pow);
             byte[i] = '1';
         } else
             byte[i] = '0';

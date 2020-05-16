@@ -8,6 +8,6 @@
 #ifndef STRING_STRUCT_H_
 #define STRING_STRUCT_H_
 
-typedef enum type_e {string = 0, array = 1} vartype;
+typedef int fd_t;
 
 #endif /* !STRING_STRUCT_H_ */

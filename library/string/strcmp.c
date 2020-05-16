@@ -9,7 +9,9 @@
 
 bool m_strcmp(const char *restrict comparing, const char *restrict compared)
 {
-    for (int i = 0; EXIST; i++)
-        if (!(EQUAL)) return (false);
+    if (m_strlen((char *)comparing) != m_strlen((char *)compared))
+        return (false);
+    for (int i = 0; comparing[i]; i++)
+        if (comparing[i] != compared[i]) return (false);
     return (true);
 }

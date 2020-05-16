@@ -42,8 +42,13 @@ static bool error(const int ac, char *const restrict *const restrict av)
 static bool vm(const int ac, char *const restrict *const restrict av)
 {
     vm_t vm;
+<<<<<<< HEAD
     
     if (error(ac, av) == false)
+=======
+
+    if (error(ac, av))
+>>>>>>> 56dbd9662b4069b35a3071ee1684399e1611a44a
         return (false);
     if (init(&vm, ac, av) == false)
         return (false);
