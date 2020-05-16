@@ -79,8 +79,8 @@ asm-*.tar
 
 # Ignore package frim jetbrain.
 .idea
-vm
-compiler
+# vm
+# compiler
 *.cor
 .vscode
 .github
