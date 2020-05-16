@@ -7,15 +7,12 @@
 
 #include "compiler/compiler.h"
 
-header_t *init_header(void)
+void *init_header(header_t *header)
 {
-    header_t *new = malloc(sizeof(header_t));
-
-    if (NULL == new)
+    if (NULL == header)
         return (NULL);
-    new->magic = -1;
-    new->prog_name[0] = '\0';
-    new->prog_size = -1;
-    new->comment[0] = '\0';
-    return (new);
+    header->magic = -1;
+    header->prog_name[0] = '\0';
+    header->prog_size = -1;
+    header->comment[0] = '\0';
 }

@@ -24,13 +24,15 @@ COMPILER		=	op.c			\
 					get_mnemonique.c	\
 					get_nb_arg.c		\
 					get_types.c		\
-					free.c
+					free.c	\
+					get_info.c	\
 
 
 PATH_PROCESS	=	$(COMMON)/process/
 PROCESS			=	compile_n_write.c	\
 					write_header.c	\
 					write_instructs.c	\
+					separate_arg_value.c	\
 
 ## ========================================================================== ##
 SRC				=	main.c	\
@@ -98,5 +100,5 @@ re:				fclean all
 %.o: %.c
 				@(echo -e "\033[32m[Controller] :[\033[31m \c")
 				@(echo -e "$@ \033[32m]\033[0m\033[0K")
-				@($(CC) $(LDFLAGS) -c -o $@ $<)
+				@($(CC) $(LDFLAGS) -c -o $@ -g $<)
 				@(echo -e "\033[2F")

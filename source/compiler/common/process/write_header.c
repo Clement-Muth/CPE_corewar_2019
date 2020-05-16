@@ -10,14 +10,28 @@
 #define COM_LEN m_strlen(header->comment)
 #define EMPTY "\0\0\0\0\0\0\0\0"
 
-static void print_magic(fd_t fd)
+static void swap_char(unsigned char *a, unsigned char *b)
 {
-    int margic[4];
+    unsigned char tmp = *a;
 
-    for (int i = 0, mag = COREWAR_EXEC_MAGIC; 4 != i; i++, mag >>= 8) {
-        margic[i] = (unsigned char) mag;
-        write(fd, &margic[i], 1);
-    }
+    *a = *b;
+    *b = tmp;
+}
+
+static void swap(unsigned int *to_swap)
+{
+    unsigned char *pt = (unsigned char *)to_swap;
+
+    swap_char(pt, pt + 3);
+    swap_char(pt + 1, pt + 2);
+}
+
+static int print_magic(fd_t fd)
+{
+    int magic = COREWAR_EXEC_MAGIC;
+
+    swap(&magic);
+    return (magic);
 }
 
 static void write_blank(fd_t fd, int lim, int size)
@@ -27,20 +41,16 @@ static void write_blank(fd_t fd, int lim, int size)
 
 static void print_header(header_t *header, fd_t fd)
 {
-    printf("prog_name = %s\n", header->prog_name);
-    write(fd, header->prog_name, PN_LEN);
-    write_blank(fd, PROG_NAME_LENGTH, PN_LEN);
-    write(fd, EMPTY, 8);
-    write(fd, header->comment, COM_LEN);
-    write_blank(fd, COMMENT_LENGTH, COM_LEN);
+    // write_blank(fd, PROG_NAME_LENGTH, PN_LEN);
+    printf("%p\n", header);
+    write(fd, header, sizeof(header_t));
+    write(fd, EMPTY, 7);
 }
 
 bool write_header(header_t *header, fd_t fd)
 {
-    header->magic = COREWAR_EXEC_MAGIC;
     header->prog_size = 50; // Don't forget to replace by function get_size();
-    print_magic(fd);
+    header->magic = print_magic(fd);
     print_header(header, fd);
-    write(fd, header, sizeof(header_t));
     return (true);
 }

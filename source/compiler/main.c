@@ -29,17 +29,23 @@ static void print_champion_instructions(op_t **instructions)
 
 static bool run(char *file)
 {
+    int n = 0;
     stat_t *stat = m_stat(file, DEFAULT, complet);
-    header_t *header = init_header();
-    op_t **instructions = init_instructions(stat->content);
+    header_t *header = malloc(sizeof(header_t));
+    op_t **instructions = init_instructions(stat->content, &n);
+    compiler_t cmp;
 
+    init_header(header);
+    n -= 3;
+    if (!(cmp.args = malloc(sizeof(char *) * (n + 1)))) return (NULL);
+    cmp.args[n] = NULL;
     if (NULL == stat || NULL == header || NULL == instructions)
         return (false);
     if (false ==
-        get_champions_informations(instructions, header, stat->content))
+        get_champions_informations(instructions, header, stat->content, &cmp))
         return (false);
-    print_champion_instructions(instructions);
-    if (!compile_n_write(header, instructions, file)) return (false);
+    // print_champion_instructions(instructions);
+    if (!compile_n_write(header, instructions, cmp.args, file)) return (false);
     my_free(header, instructions, stat);
     return (true);
 }
