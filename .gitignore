@@ -79,3 +79,6 @@ asm-*.tar
 
 # Ignore package frim jetbrain.
 .idea
+
+# Ignore the data test file
+data

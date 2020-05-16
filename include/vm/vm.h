@@ -13,14 +13,18 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #include "../library/string/include/string.h"
 #include "../library/stat/include/stat.h"
+#include "../library/assert/include/assert.h"
 #include "../library/maths/include/maths.h"
 
+#include "op.h"
 #include "vm_define.h"
 #include "vm_struct.h"
 #include "vm_function.h"
-#include "op.h"
 
 #endif /* !VM_H_ */
