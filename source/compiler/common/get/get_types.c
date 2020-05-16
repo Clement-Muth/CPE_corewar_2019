@@ -41,7 +41,7 @@ static void get_m_arg(int n, char **tmp, char **args)
     if (j == 1)
         args[n] = m_strdup(tmp[0]);
     else if (j == 3)
-        args[n] = m_strdup(strcat(tmp[0], strcat(tmp[1], tmp[2])));
+        args[n] = m_strdup(m_strcat(tmp[0], m_strcat(tmp[1], tmp[2])));
 }
 
 int *get_types(char *name, char *line, int nb_arg, char **args)
