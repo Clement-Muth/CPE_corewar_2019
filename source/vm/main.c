@@ -34,7 +34,7 @@ static bool error(const int ac, char *const restrict *const restrict av)
 static bool vm(const int ac, char *const restrict *const restrict av)
 {
     vm_t vm;
-    
+
     if (error(ac, av))
         return (false);
      printf("It's not a .cor file\n");

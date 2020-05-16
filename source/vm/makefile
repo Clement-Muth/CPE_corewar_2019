@@ -37,39 +37,14 @@ DFLAGS			=	-g -Wfatal-errors -Wpedantic -Wextra \
 
 all:			$(BIN)
 
-$(BIN):			$(OBJ) lib
+$(BIN):			$(OBJ)
 				@$(CC) -o $(BIN) $(OBJ) $(LDFLAGS)
-
-
-## =============MAKE LIB============= ##
-lib:
-				@$(MAKE) -C ../../library/string/
-				@$(MAKE) -C ../../library/assert/
-				@$(MAKE) -C ../../library/stat/
-				@$(MAKE) -C ../../library/maths/
-
 
 clean:
 				$(RM) $(OBJ)
-				@$(MAKE) -C ../../library/string/ clean
-				@$(MAKE) -C ../../library/assert/ clean
-				@$(MAKE) -C ../../library/stat/ clean
-				@$(MAKE) -C ../../library/maths/ clean
-
 
 fclean:			clean
 				$(RM) $(BIN)
-				@$(MAKE) -C ../../library/string/ fclean
-				@$(MAKE) -C ../../library/assert/ fclean
-				@$(MAKE) -C ../../library/stat/ fclean
-				@$(MAKE) -C ../../library/maths/ fclean
-
-re_lib:
-				@$(MAKE) -C ../../library/string/ re
-				@$(MAKE) -C ../../library/assert/ re
-				@$(MAKE) -C ../../library/stat/ re
-				@$(MAKE) -C ../../library/maths/ re
-
 
 re:				fclean all
 

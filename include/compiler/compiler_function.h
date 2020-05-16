@@ -35,6 +35,7 @@ char *filepath);
 bool write_header(header_t *header, fd_t fd);
 bool write_instruct(op_t **instructions, char **args, fd_t fd);
 char **separate_arg_value(char *arg);
+int get_binaire(char *hexa);
 
 /*          free            */
 void my_free(header_t *, op_t **, stat_t *);
