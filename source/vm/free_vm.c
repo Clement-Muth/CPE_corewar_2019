@@ -9,7 +9,10 @@
 
 void free_vm(vm_t *vm)
 {
-    free(vm->data->champ[0].instruction);
+    for (int i = 0; i < vm->data->nbr_champ; ++i)
+        free(vm->data->champ[i].instruction);
+    free(vm->ram->ram);
+    free(vm->ram->memory_prio);
     free(vm->data);
     free(vm->ram);
     free(vm->commande);

@@ -9,5 +9,5 @@
 
 void *sti_MNEMONIC(void)
 {
-    printf("%s\n", "cc");
+    m_putstr("MNEMONIC\n",  1);
 }
