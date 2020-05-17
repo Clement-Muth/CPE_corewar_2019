@@ -31,7 +31,8 @@ static bool count_line(stat_t *statf)
 static bool fill_info(stat_t *statf, type info)
 {
     if (!(count_line(statf))) return (false);
-    if (!(FINFO.stream = m_fopen(statf->filepath))) return (false);
+    if (!(FINFO.stream = m_fopen(statf->filepath)))
+        return (false);
     if (complet == info) {
         statf->content = malloc(S_ARRAY * (statf->nline + 1));
         statf->content[statf->nline] = NULL;
@@ -49,6 +50,7 @@ stat_t *m_stat(const char *restrict filepath, size_t nread, type info)
     stat_t *statf = NULL;
 
     statf = init_stat(statf, filepath, nread, info);
-    if (!fill_info(statf, info)) return (NULL);
+    if (!fill_info(statf, info))
+        return (NULL);
     return (statf);
 }
