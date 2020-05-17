@@ -7,7 +7,7 @@
 
 #include "vm/vm.h"
 
-void *or_mnemonic(void)
+void or_mnemonic(void)
 {
     m_putstr("MNEMONIC\n", 1);
 }
