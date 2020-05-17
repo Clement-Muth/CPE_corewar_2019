@@ -25,7 +25,6 @@ void param_write(int n, int b, fd_t fd)
         ret = n >> d;
         write(fd, &ret, 1);
     }
-
 }
 
 static void param_convert(op_t *instruction, fd_t fd)

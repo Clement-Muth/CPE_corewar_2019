@@ -13,7 +13,7 @@ static bool init(vm_t *vm, const int ac,
     if (init_struct(vm) == false)
         return (false);
     if (init_champion(vm, ac, av) == false)
-        return(false);
+        return (false);
     if (init_process(vm, ac, av) == false)
         return (false);
     init_commande(vm->commande);

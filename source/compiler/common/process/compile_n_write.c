@@ -21,7 +21,7 @@ static bool m_fclose(fd_t fd)
 }
 
 bool compile_n_write(header_t *header, op_t **instuctions, char **args,
-char *filepath)
+    char *filepath)
 {
     char *filecore = m_strcat(m_strncpy(filepath, '.'), ".cor");
     fd_t fd = m_fcreate(filecore, O_CREAT | O_WRONLY | O_TRUNC, 0666);
