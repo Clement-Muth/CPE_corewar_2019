@@ -14,6 +14,7 @@ static bool init_instruction(op_t *instruction, char *line)
     instruction->nbr_args = get_nb_arg(instruction->mnemonique, line);
     if (-1 == instruction->nbr_args)
         return (false);
+    m_putnbr(instruction->nbr_args, 1);
     type = get_types(instruction->mnemonique, line, instruction->nbr_args);
     if (NULL == type)
         return (false);
@@ -27,9 +28,11 @@ op_t *get_instruction(char *line)
 {
     op_t *new = malloc(sizeof(op_t));
 
+    m_putstr("hello", 1);
     if (NULL == new)
         return (NULL);
     new->mnemonique = get_mnemonique(line);
+    m_putstr("hello", 1);
     if (NULL == new->mnemonique || false == init_instruction(new, line))
         return (NULL);
     return (new);

@@ -11,6 +11,7 @@ static bool add_instruction(op_t **list, char *line)
 {
     int index = -1;
 
+    m_putstr("hek", 1);
     while (list[++index]);
     list[index] = get_instruction(line);
     if (NULL == list[index])
@@ -35,7 +36,7 @@ bool get_champions_informations(op_t **instructions, header_t *header,
 {
     int index = get_index_instructions(buf);
 
-    if (-1 == index) {
+    if (-1 == index || NULL == buf[index + 1]) {
         m_putstr("A champion need instructions\n", 2);
         return (false);
     }
