@@ -34,7 +34,6 @@ VM		=	error/print_usage.c	\
 			process/fight_process.c	\
 			utils/get_global_int.c	\
 			utils/get_next_line.c	\
-			
 
 
 ## ========================================================================== ##

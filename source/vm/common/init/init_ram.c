@@ -12,7 +12,7 @@ static void set_ram(void *tmp, char c)
     char *buf = tmp;
 
     for (int i = 0; i < MEM_SIZE; ++i)
-        buf[i] = c; 
+        buf[i] = c;
 }
 
 static bool init_ram_struct(ram_t *ram)
