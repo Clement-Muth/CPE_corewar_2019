@@ -12,7 +12,6 @@ static bool count_champion(vm_t *vm, const int ac,
 {
     int str_len = 0;
 
-    printf("MON NOM EST BATMAN\n");
     for (int i = 1; i < ac; ++i) {
         if (av[i][m_strlen(av[i]) - 1] == 'r' &&
             av[i][m_strlen(av[i]) - 2] == 'o' &&

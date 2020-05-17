@@ -24,11 +24,9 @@ static void print_winner(champion_t *champ, int total_alive)
 {
     int i;
 
-    for (i = 0; i < total_alive; ++i) {
+    for (i = 0; i < total_alive; ++i)
         if (champ[i].alive == 1)
             break;
-        printf("D'accord chef = %d\n", champ[i].alive);
-    }
     m_putstr("The player ", 1);
     m_putchar(i + 49, 1);
     m_putstr("(", 1);
