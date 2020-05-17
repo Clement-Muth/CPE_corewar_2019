@@ -27,9 +27,8 @@ static void print_champion_instructions(op_t **instructions)
     }
 }
 
-static bool run(char *file)
+static bool run(char *file, int *n)
 {
-    int n = 0;
     stat_t *stat = m_stat(file, DEFAULT, complet);
     header_t *header = malloc(sizeof(header_t));
     op_t **instructions;
@@ -37,11 +36,11 @@ static bool run(char *file)
 
     if (!stat)
         return (false);
-    instructions = init_instructions(stat->content, &n);
+    instructions = init_instructions(stat->content, n);
     init_header(header);
     n -= 3;
-    if (!(cmp.args = malloc(sizeof(char *) * (n + 1)))) return (NULL);
-    cmp.args[n] = NULL;
+    if (!(cmp.args = malloc(sizeof(char *) * (*n + 1)))) return (NULL);
+    cmp.args[*n] = NULL;
     if (NULL == stat || NULL == header || NULL == instructions)
         return (false);
     if (false ==
@@ -84,13 +83,15 @@ static bool check_arguments(int ac, char *av[])
 
 int main(int argc, char *argv[])
 {
+    int n = 0;
+
     if (false == check_arguments(argc, argv))
         return (84);
     if (true == m_strcmp("-h", argv[1])) {
         print_help(argv[0]);
         return (0);
     }
-    if (false == run(argv[1]))
+    if (false == run(argv[1], &n))
         return (84);
     return (0);
 }

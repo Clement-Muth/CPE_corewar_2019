@@ -7,7 +7,7 @@
 
 #include "vm/vm.h"
 
-void *ldi_MNEMONIC(void)
+void *ldi_mnemonic(void)
 {
-    m_putstr("MNEMONIC\n",  1);
+    m_putstr("MNEMONIC\n", 1);
 }

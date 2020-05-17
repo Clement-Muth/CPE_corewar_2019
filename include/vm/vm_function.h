@@ -25,21 +25,21 @@ bool fight_process(vm_t *vm);
 void free_vm(vm_t *vm);
 
 // commande for vm
-void *live_MNEMONIC(void);
-void *ld_MNEMONIC(void);
-void *st_MNEMONIC(void);
-void *add_MNEMONIC(void);
-void *sub_MNEMONIC(void);
-void *and_MNEMONIC(void);
-void *or_MNEMONIC(void);
-void *xor_MNEMONIC(void);
-void *zjmp_MNEMONIC(void);
-void *ldi_MNEMONIC(void);
-void *sti_MNEMONIC(void);
-void *fork_MNEMONIC(void);
-void *lld_MNEMONIC(void);
-void *lldi_MNEMONIC(void);
-void *lfork_MNEMONIC(void);
-void *aff_MNEMONIC(void);
+void *live_mnemonic(void);
+void *ld_mnemonic(void);
+void *st_mnemonic(void);
+void *add_mnemonic(void);
+void *sub_mnemonic(void);
+void *and_mnemonic(void);
+void *or_mnemonic(void);
+void *xor_mnemonic(void);
+void *zjmp_mnemonic(void);
+void *ldi_mnemonic(void);
+void *sti_mnemonic(void);
+void *fork_mnemonic(void);
+void *lld_mnemonic(void);
+void *lldi_mnemonic(void);
+void *lfork_mnemonic(void);
+void *aff_mnemonic(void);
 
 #endif /* !FUNCTION_H_ */

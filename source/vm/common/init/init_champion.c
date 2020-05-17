@@ -12,6 +12,7 @@ static bool count_champion(vm_t *vm, const int ac,
 {
     int str_len = 0;
 
+    printf("MON NOM EST BATMAN\n");
     for (int i = 1; i < ac; ++i) {
         if (av[i][m_strlen(av[i]) - 1] == 'r' &&
             av[i][m_strlen(av[i]) - 2] == 'o' &&
@@ -30,11 +31,11 @@ static bool count_champion(vm_t *vm, const int ac,
     return (true);
 }
 
-static bool init_one_champ(champion_t champ)
+static bool init_one_champ(champion_t *champ)
 {
-    champ.alive = 0;
-    champ.file.prog_size = 0;
-    champ.file.magic = 0;
+    champ->alive = 1;
+    champ->file.prog_size = 0;
+    champ->file.magic = 0;
     return (true);
 }
 
@@ -44,7 +45,7 @@ bool init_champion(vm_t *vm, const int ac,
     if (count_champion(vm, ac, av) == false)
         return (false);
     for (int i = 0; i != vm->data->nbr_champ; ++i) {
-        if (init_one_champ(vm->data->champ[i]) == false)
+        if (init_one_champ(&vm->data->champ[i]) == false)
             return (false);
         vm->data->champ[i].pc_pos = (MEM_SIZE / vm->data->nbr_champ) * i;
     }

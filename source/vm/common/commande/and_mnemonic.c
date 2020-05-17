@@ -7,7 +7,7 @@
 
 #include "vm/vm.h"
 
-void *and_MNEMONIC(void)
+void *and_mnemonic(void)
 {
-    m_putstr("MNEMONIC\n",  1);
+    m_putstr("MNEMONIC\n", 1);
 }

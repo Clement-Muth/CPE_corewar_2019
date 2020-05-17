@@ -7,7 +7,7 @@
 
 #include "vm/vm.h"
 
-void *zjmp_MNEMONIC(void)
+void *zjmp_mnemonic(void)
 {
-    m_putstr("MNEMONIC\n",  1);
+    m_putstr("MNEMONIC\n", 1);
 }

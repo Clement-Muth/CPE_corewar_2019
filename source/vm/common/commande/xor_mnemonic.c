@@ -7,7 +7,7 @@
 
 #include "vm/vm.h"
 
-void *xor_MNEMONIC(void)
+void *xor_mnemonic(void)
 {
-    m_putstr("MNEMONIC\n",  1);
+    m_putstr("MNEMONIC\n", 1);
 }

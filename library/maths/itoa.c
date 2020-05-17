@@ -7,6 +7,20 @@
 
 #include "maths.h"
 
+static void init_string(char *memptr, size_t memsize)
+{
+    while (memsize--) memptr[memsize] = '\0';
+}
+
+static char *memalloc(size_t memsize)
+{
+    char *memptr = NULL;
+
+    if (!(memptr = malloc(sizeof(char *) * memsize + 1))) return (NULL);
+    else init_string(memptr, memsize + 2);
+    return (memptr);
+}
+
 static void strrev(char *str)
 {
     unsigned char a;
@@ -32,7 +46,7 @@ char *m_itoa(int num)
 {
     int i = 0;
     bool isNegative = false;
-    char *str = m_memalloc(300);
+    char *str = memalloc(300);
 
     if (num == 0) {
         str[i++] = '0';
