@@ -15,7 +15,7 @@ ASM_BIN			=	asm
 
 ## ==============================SOURCE DIR================================== ##
 SRC_VM_DIR		=	source/vm/
-SRC_ASM_DIR		=	source/asm/
+SRC_ASM_DIR		=	source/compiler/
 
 
 ## ==============================BINARY DIR================================== ##
