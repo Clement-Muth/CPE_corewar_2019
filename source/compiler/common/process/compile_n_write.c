@@ -16,7 +16,8 @@ static fd_t m_fcreate(char *filepath, int flag, mode_t mode)
 
 static bool m_fclose(fd_t fd)
 {
-    return ((close(fd)) ? (true) : (false));
+    close(fd);
+    return (true);
 }
 
 bool compile_n_write(header_t *header, op_t **instuctions, char **args,

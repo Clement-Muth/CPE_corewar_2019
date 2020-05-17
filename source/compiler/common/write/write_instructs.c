@@ -58,6 +58,7 @@ static bool write_arg(op_t *instruction, char *arg, fd_t fd, bool wpb)
         (1) : (TYPE == T_IND) ?
         (2) : (4)
         , fd);
+    return (true);
 }
 
 bool write_instruct(op_t **instructions, char **args, fd_t fd)
