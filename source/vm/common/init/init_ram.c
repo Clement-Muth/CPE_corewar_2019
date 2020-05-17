@@ -19,18 +19,26 @@ static bool init_ram_struct(ram_t *ram)
 {
     ram->ram = malloc(sizeof(unsigned char) * MEM_SIZE);
     if (ram->ram == NULL) {
-        printf("Fail to malloc RAM\n");
+        m_putstr("Fail to malloc RAM\n", 1);
+        return (false);
+    }
+    ram->memory_prio = malloc(sizeof(char) * MEM_SIZE);
+    if (ram->ram == NULL) {
+        m_putstr("Fail to malloc MEMORY\n", 1);
         return (false);
     }
     set_ram(ram->ram, 0);
+    set_ram(ram->memory_prio, -1);
     return (true);
 }
 
-static bool prepare_ram(vm_t *vm)
+static bool prepare_champ(champion_t *champ, ram_t *ram, int total_champ)
 {
-    for (int i = 0; i < vm->data->nbr_champ; ++i) {
-        printf("%d %d ", i, vm->data->nbr_champ);
-        printf("%s\n", vm->data->champ[i].file.prog_name);
+    for (int i = 0; i != total_champ; ++i) {
+        for (int j = -1 ; j < champ[i].file.prog_size; j++) {
+            ram->ram[j + champ[i].pc_pos] = champ[i].instruction[j];
+            ram->memory_prio[j + champ[i].pc_pos] = i;
+        }
     }
     return (true);
 }
@@ -39,8 +47,8 @@ bool init_ram(vm_t *vm)
 {
     if (init_ram_struct(vm->ram) == false)
         return (false);
-    if (prepare_ram(vm) == false)
+    if (prepare_champ(vm->data->champ, vm->ram, vm->data->nbr_champ)
+        == false)
         return (false);
-    printf("%s\n", vm->data->champ[1].file.prog_name);
     return (true);
 }

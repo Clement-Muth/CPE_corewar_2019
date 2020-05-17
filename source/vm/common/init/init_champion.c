@@ -21,10 +21,10 @@ static bool count_champion(vm_t *vm, const int ac,
         }
     }
     if (vm->data->nbr_champ < 2) {
-        printf("It's enough champions\n");
+        m_putstr("It's enough champions\n", 1);
         return (false);
     } else if (vm->data->nbr_champ > 4) {
-        printf("Is must be maximum 4 champions\n");
+        m_putstr("Is must be maximum 4 champions\n", 1);
         return (false);
     }
     return (true);
@@ -43,8 +43,10 @@ bool init_champion(vm_t *vm, const int ac,
 {
     if (count_champion(vm, ac, av) == false)
         return (false);
-    for (int i = 0; i != vm->data->nbr_champ; ++i)
+    for (int i = 0; i != vm->data->nbr_champ; ++i) {
         if (init_one_champ(vm->data->champ[i]) == false)
             return (false);
+        vm->data->champ[i].pc_pos = (MEM_SIZE / vm->data->nbr_champ) * i;
+    }
     return (true);
 }

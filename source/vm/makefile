@@ -33,6 +33,7 @@ VM		=	error/print_usage.c	\
 			init/init_ram.c	\
 			process/fight_process.c	\
 			utils/get_global_int.c	\
+			utils/get_next_line.c	\
 			
 
 
@@ -77,5 +78,5 @@ re:				fclean all
 %.o: %.c
 				@(echo "\033[32m[Controller] :[\033[31m \c")
 				@(echo "$@ \033[32m]\033[0m\033[0K")
-				@($(CC) $(LDFLAGS) -c -o $@ $<)
+				@($(CC) -g $(LDFLAGS) -c -o $@ $<)
 				@(echo "\033[2F")

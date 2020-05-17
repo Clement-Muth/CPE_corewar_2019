@@ -11,17 +11,17 @@ static bool malloc_struct(vm_t *vm)
 {
     vm->data = malloc(sizeof(data_t) * 4);
     if (vm->data == NULL) {
-        printf("Fail to malloc Data Struct\n");
+        m_putstr("Fail to malloc Data Struct\n", 1);
         return (false);
     }
     vm->ram = malloc(sizeof(ram_t));
     if (vm->ram == NULL) {
-        printf("Fail to malloc RAM Struct\n");
+        m_putstr("Fail to malloc RAM Struct\n", 1);
         return (false);
     }
     vm->commande = malloc(sizeof(commande_t) * 15);
     if (vm->commande == NULL) {
-        printf("Fail to malloc Commande Struct\n");
+        m_putstr("Fail to malloc Commande Struct\n", 1);
         return (false);
     }
     return (true);
