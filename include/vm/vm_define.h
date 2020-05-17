@@ -8,6 +8,4 @@
 #ifndef VM_DEFINE_H_
 #define VM_DEFINE_H_
 
-
-
 #endif /* !VM_DEFINE_H_ */

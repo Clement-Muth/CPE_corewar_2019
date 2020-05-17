@@ -11,6 +11,7 @@
 typedef struct ram_s
 {
     unsigned char *ram;
+    char *memory_prio;
 } ram_t;
 
 typedef struct commande_s
@@ -23,6 +24,7 @@ typedef struct champion_s
     int alive;
     header_t file;
     unsigned char *instruction;
+    int pc_pos;
 } champion_t;
 
 typedef struct data_s
