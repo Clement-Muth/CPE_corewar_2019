@@ -1,6 +1,7 @@
-.name "FENIX
-.comment "From fire to life
-start: sti r1,%:field1,%1
+.name "FENIX"
+.comment "From fire to life"
+start:
+sti r1,%:field1,%1
 sti r1,%:field2,%2
 sti r2,%:field3,%2
 sti r1,%:field4,%2

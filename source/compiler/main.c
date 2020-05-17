@@ -32,9 +32,12 @@ static bool run(char *file)
     int n = 0;
     stat_t *stat = m_stat(file, DEFAULT, complet);
     header_t *header = malloc(sizeof(header_t));
-    op_t **instructions = init_instructions(stat->content, &n);
+    op_t **instructions;
     compiler_t cmp;
 
+    if (!stat)
+        return (false);
+    instructions = init_instructions(stat->content, &n);
     init_header(header);
     n -= 3;
     if (!(cmp.args = malloc(sizeof(char *) * (n + 1)))) return (NULL);
