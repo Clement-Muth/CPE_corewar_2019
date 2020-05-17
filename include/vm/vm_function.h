@@ -8,6 +8,11 @@
 #ifndef FUNCTION_H_
 #define FUNCTION_H_
 
+#ifndef READ_SIZE
+    #define READ_SIZE (0)
+#endif /*READ_SIZE*/
+
+char *get_next_line(int);
 void print_usage(void);
 bool init_champion(vm_t *vm, const int ac, char *const restrict *const restrict av);
 bool init_struct(vm_t *vm);

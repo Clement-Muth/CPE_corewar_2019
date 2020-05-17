@@ -7,7 +7,7 @@
 
 #include "vm/vm.h"
 
-void *fork_MNEMONIC(void)
+void *lfork_MNEMONIC(void)
 {
-    printf("%s\n", "cc");
+    m_putstr("MNEMONIC\n",  1);
 }

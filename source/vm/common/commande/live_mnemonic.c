@@ -7,7 +7,7 @@
 
 #include "vm/vm.h"
 
-void *ld_MNEMONIC(void)
+void *live_MNEMONIC(void)
 {
-    printf("%s\n", "cc");
+    m_putstr("MNEMONIC\n",  1);
 }

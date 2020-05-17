@@ -14,25 +14,26 @@ VM		=	error/print_usage.c	\
 			init/init_struct.c	\
 			init/init_process.c	\
 			init/init_commande.c	\
-			commande/live_MNEMONIC.c	\
-			commande/ld_MNEMONIC.c	\
-			commande/st_MNEMONIC.c	\
-			commande/add_MNEMONIC.c	\
-			commande/sub_MNEMONIC.c	\
-			commande/and_MNEMONIC.c	\
-			commande/or_MNEMONIC.c	\
-			commande/xor_MNEMONIC.c	\
-			commande/zjmp_MNEMONIC.c	\
-			commande/ldi_MNEMONIC.c	\
-			commande/sti_MNEMONIC.c	\
-			commande/fork_MNEMONIC.c	\
-			commande/lld_MNEMONIC.c	\
-			commande/lldi_MNEMONIC.c	\
-			commande/lfork_MNEMONIC.c	\
-			commande/aff_MNEMONIC.c	\
+			commande/live_mnemonic.c	\
+			commande/ld_mnemonic.c	\
+			commande/st_mnemonic.c	\
+			commande/add_mnemonic.c	\
+			commande/sub_mnemonic.c	\
+			commande/and_mnemonic.c	\
+			commande/or_mnemonic.c	\
+			commande/xor_mnemonic.c	\
+			commande/zjmp_mnemonic.c	\
+			commande/ldi_mnemonic.c	\
+			commande/sti_mnemonic.c	\
+			commande/fork_mnemonic.c	\
+			commande/lld_mnemonic.c	\
+			commande/lldi_mnemonic.c	\
+			commande/lfork_mnemonic.c	\
+			commande/aff_mnemonic.c	\
 			init/init_ram.c	\
 			process/fight_process.c	\
 			utils/get_global_int.c	\
+			utils/get_next_line.c	\
 			
 
 
@@ -77,5 +78,5 @@ re:				fclean all
 %.o: %.c
 				@(echo "\033[32m[Controller] :[\033[31m \c")
 				@(echo "$@ \033[32m]\033[0m\033[0K")
-				@($(CC) $(LDFLAGS) -c -o $@ $<)
+				@($(CC) -g $(LDFLAGS) -c -o $@ $<)
 				@(echo "\033[2F")

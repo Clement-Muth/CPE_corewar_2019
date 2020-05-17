@@ -57,7 +57,7 @@ int main(const int ac, char *const restrict *const restrict av,
     char *const restrict *const restrict env)
 {
     if (env == NULL) {
-        printf("can't read env");
+        m_putstr("can't read env", 1);
         return (84);
     }
     return (vm(ac, av)) ? (0) : (84);
